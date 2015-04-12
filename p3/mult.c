@@ -20,6 +20,10 @@ void get_user_input(int argc, char *argv[], matrix *A, matrix *B, form_and_flag 
 	fscanf(stdin, "%s", form_flag->matrix_form); //get form
 	fscanf(stdin, "%s", form_flag->flag);
 	fscanf(stdin, "%d", &(form_flag->n));
+	while (!feof(stdin)){
+		char form_buf[10] = "";
+		fscanf(stdin, "%3s", form_buf);
+	}
 
 }
 
