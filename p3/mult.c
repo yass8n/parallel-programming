@@ -51,5 +51,5 @@ int main(int argc, char * argv[]){
 	matrix *A, *B, *C;
 	form_and_flag form_flag;
 	get_user_input(&A, &B, &form_flag);
-	printf("%d down here\n", A->rows);
+	printf("%d down here\n", A->values[0]);
 }
