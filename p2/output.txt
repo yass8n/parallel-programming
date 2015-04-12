@@ -1,0 +1,1885 @@
+Yaseen Aniss
+This file contains the output of running the ruby script "create_output.rb"
+
+The bottom of each run shows the number of processors used, 
+as well as the speed up and efficiency calculations (which were calculated using minimums)
+
+******** CALCULATED n = 2032143 ********=
+
+
+[
+          {
+            time : 3.9356399e-01
+            num_trapezoids : 2032143
+            result : 4.00372090015133e+03
+            abs_true_error : 1.817299e-15 is less than criteria
+            num_processors : 1
+          },
+          {
+            time : 3.9449215e-01
+            num_trapezoids : 2032143
+            result : 4.00372090015133e+03
+            abs_true_error : 1.817299e-15 is less than criteria
+            num_processors : 1
+          },
+          {
+            time : 3.9344215e-01
+            num_trapezoids : 2032143
+            result : 4.00372090015133e+03
+            abs_true_error : 1.817299e-15 is less than criteria
+            num_processors : 1
+          },
+          {
+            time : 3.9351892e-01
+            num_trapezoids : 2032143
+            result : 4.00372090015133e+03
+            abs_true_error : 1.817299e-15 is less than criteria
+            num_processors : 1
+          },
+          {
+            time : 3.9347506e-01
+            num_trapezoids : 2032143
+            result : 4.00372090015133e+03
+            abs_true_error : 1.817299e-15 is less than criteria
+            num_processors : 1
+          },
+
+          **** p = 1 , speedup = 1.0 , efficiency = 1.0 ****
+
+]
+
+[
+          {
+            time : 1.9724107e-01
+            num_trapezoids : 2032143
+            result : 4.00372009207086e+03
+            abs_true_error : 2.018324e-07 is NOT less than criteria
+            num_processors : 2
+          },
+          {
+            time : 2.0594406e-01
+            num_trapezoids : 2032143
+            result : 4.00372009207086e+03
+            abs_true_error : 2.018324e-07 is NOT less than criteria
+            num_processors : 2
+          },
+          {
+            time : 1.9679713e-01
+            num_trapezoids : 2032143
+            result : 4.00372009207086e+03
+            abs_true_error : 2.018324e-07 is NOT less than criteria
+            num_processors : 2
+          },
+          {
+            time : 1.9684100e-01
+            num_trapezoids : 2032143
+            result : 4.00372009207086e+03
+            abs_true_error : 2.018324e-07 is NOT less than criteria
+            num_processors : 2
+          },
+          {
+            time : 1.9683504e-01
+            num_trapezoids : 2032143
+            result : 4.00372009207086e+03
+            abs_true_error : 2.018324e-07 is NOT less than criteria
+            num_processors : 2
+          },
+
+          **** p = 2 , speedup = 1.9992270720614675 , efficiency = 0.9996135360307338 ****
+
+]
+
+[
+          {
+            time : 4.9399853e-02
+            num_trapezoids : 2032143
+            result : 4.00371524536229e+03
+            abs_true_error : 1.412385e-06 is NOT less than criteria
+            num_processors : 8
+          },
+          {
+            time : 4.9545050e-02
+            num_trapezoids : 2032143
+            result : 4.00371524536229e+03
+            abs_true_error : 1.412385e-06 is NOT less than criteria
+            num_processors : 8
+          },
+          {
+            time : 4.9324036e-02
+            num_trapezoids : 2032143
+            result : 4.00371524536229e+03
+            abs_true_error : 1.412385e-06 is NOT less than criteria
+            num_processors : 8
+          },
+          {
+            time : 4.9368858e-02
+            num_trapezoids : 2032143
+            result : 4.00371524536229e+03
+            abs_true_error : 1.412385e-06 is NOT less than criteria
+            num_processors : 8
+          },
+          {
+            time : 5.0026894e-02
+            num_trapezoids : 2032143
+            result : 4.00371524536229e+03
+            abs_true_error : 1.412385e-06 is NOT less than criteria
+            num_processors : 8
+          },
+
+          **** p = 8 , speedup = 7.976681997393724 , efficiency = 0.9970852496742155 ****
+
+]
+
+[
+          {
+            time : 2.8875113e-02
+            num_trapezoids : 2032143
+            result : 4.00372009207103e+03
+            abs_true_error : 2.018324e-07 is NOT less than criteria
+            num_processors : 14
+          },
+          {
+            time : 3.0387878e-02
+            num_trapezoids : 2032143
+            result : 4.00372009207103e+03
+            abs_true_error : 2.018324e-07 is NOT less than criteria
+            num_processors : 14
+          },
+          {
+            time : 2.8561831e-02
+            num_trapezoids : 2032143
+            result : 4.00372009207103e+03
+            abs_true_error : 2.018324e-07 is NOT less than criteria
+            num_processors : 14
+          },
+          {
+            time : 2.8388023e-02
+            num_trapezoids : 2032143
+            result : 4.00372009207103e+03
+            abs_true_error : 2.018324e-07 is NOT less than criteria
+            num_processors : 14
+          },
+          {
+            time : 2.8965950e-02
+            num_trapezoids : 2032143
+            result : 4.00372009207103e+03
+            abs_true_error : 2.018324e-07 is NOT less than criteria
+            num_processors : 14
+          },
+
+          **** p = 14 , speedup = 13.859441708920695 , efficiency = 0.9899601220657639 ****
+
+]
+
+[
+          {
+            time : 2.0290852e-02
+            num_trapezoids : 2032143
+            result : 4.00371847616311e+03
+            abs_true_error : 6.054342e-07 is NOT less than criteria
+            num_processors : 20
+          },
+          {
+            time : 2.0814896e-02
+            num_trapezoids : 2032143
+            result : 4.00371847616311e+03
+            abs_true_error : 6.054342e-07 is NOT less than criteria
+            num_processors : 20
+          },
+          {
+            time : 2.0380020e-02
+            num_trapezoids : 2032143
+            result : 4.00371847616311e+03
+            abs_true_error : 6.054342e-07 is NOT less than criteria
+            num_processors : 20
+          },
+          {
+            time : 2.1991014e-02
+            num_trapezoids : 2032143
+            result : 4.00371847616311e+03
+            abs_true_error : 6.054342e-07 is NOT less than criteria
+            num_processors : 20
+          },
+          {
+            time : 2.1363020e-02
+            num_trapezoids : 2032143
+            result : 4.00371847616311e+03
+            abs_true_error : 6.054342e-07 is NOT less than criteria
+            num_processors : 20
+          },
+
+          **** p = 20 , speedup = 19.390124672931424 , efficiency = 0.9695062336465712 ****
+
+]
+
+
+******** n = 127008 ********=
+
+
+[
+          {
+            time : 2.4782896e-02
+            num_trapezoids : 127008
+            result : 4.00372090028923e+03
+            abs_true_error : 3.444327e-11 is NOT less than criteria
+            num_processors : 1
+          },
+          {
+            time : 2.4756193e-02
+            num_trapezoids : 127008
+            result : 4.00372090028923e+03
+            abs_true_error : 3.444327e-11 is NOT less than criteria
+            num_processors : 1
+          },
+          {
+            time : 2.4775982e-02
+            num_trapezoids : 127008
+            result : 4.00372090028923e+03
+            abs_true_error : 3.444327e-11 is NOT less than criteria
+            num_processors : 1
+          },
+          {
+            time : 2.4770021e-02
+            num_trapezoids : 127008
+            result : 4.00372090028923e+03
+            abs_true_error : 3.444327e-11 is NOT less than criteria
+            num_processors : 1
+          },
+          {
+            time : 2.4723053e-02
+            num_trapezoids : 127008
+            result : 4.00372090028923e+03
+            abs_true_error : 3.444327e-11 is NOT less than criteria
+            num_processors : 1
+          },
+
+          **** p = 1 , speedup = 1.0 , efficiency = 1.0 ****
+
+]
+
+[
+          {
+            time : 1.2411833e-02
+            num_trapezoids : 127008
+            result : 4.00372090028918e+03
+            abs_true_error : 3.443168e-11 is NOT less than criteria
+            num_processors : 2
+          },
+          {
+            time : 1.2367964e-02
+            num_trapezoids : 127008
+            result : 4.00372090028918e+03
+            abs_true_error : 3.443168e-11 is NOT less than criteria
+            num_processors : 2
+          },
+          {
+            time : 1.2353897e-02
+            num_trapezoids : 127008
+            result : 4.00372090028918e+03
+            abs_true_error : 3.443168e-11 is NOT less than criteria
+            num_processors : 2
+          },
+          {
+            time : 1.2356997e-02
+            num_trapezoids : 127008
+            result : 4.00372090028918e+03
+            abs_true_error : 3.443168e-11 is NOT less than criteria
+            num_processors : 2
+          },
+          {
+            time : 1.2377977e-02
+            num_trapezoids : 127008
+            result : 4.00372090028918e+03
+            abs_true_error : 3.443168e-11 is NOT less than criteria
+            num_processors : 2
+          },
+
+          **** p = 2 , speedup = 2.0012351568092237 , efficiency = 1.0006175784046119 ****
+
+]
+
+[
+          {
+            time : 3.1621456e-03
+            num_trapezoids : 127008
+            result : 4.00372090028918e+03
+            abs_true_error : 3.443032e-11 is NOT less than criteria
+            num_processors : 8
+          },
+          {
+            time : 3.2148361e-03
+            num_trapezoids : 127008
+            result : 4.00372090028918e+03
+            abs_true_error : 3.443032e-11 is NOT less than criteria
+            num_processors : 8
+          },
+          {
+            time : 3.1881332e-03
+            num_trapezoids : 127008
+            result : 4.00372090028918e+03
+            abs_true_error : 3.443032e-11 is NOT less than criteria
+            num_processors : 8
+          },
+          {
+            time : 3.2069683e-03
+            num_trapezoids : 127008
+            result : 4.00372090028918e+03
+            abs_true_error : 3.443032e-11 is NOT less than criteria
+            num_processors : 8
+          },
+          {
+            time : 3.1561852e-03
+            num_trapezoids : 127008
+            result : 4.00372090028918e+03
+            abs_true_error : 3.443032e-11 is NOT less than criteria
+            num_processors : 8
+          },
+
+          **** p = 8 , speedup = 7.833207316224662 , efficiency = 0.9791509145280828 ****
+
+]
+
+[
+          {
+            time : 1.9240379e-03
+            num_trapezoids : 127008
+            result : 4.00372090028918e+03
+            abs_true_error : 3.443032e-11 is NOT less than criteria
+            num_processors : 14
+          },
+          {
+            time : 1.9679070e-03
+            num_trapezoids : 127008
+            result : 4.00372090028918e+03
+            abs_true_error : 3.443032e-11 is NOT less than criteria
+            num_processors : 14
+          },
+          {
+            time : 2.0000935e-03
+            num_trapezoids : 127008
+            result : 4.00372090028918e+03
+            abs_true_error : 3.443032e-11 is NOT less than criteria
+            num_processors : 14
+          },
+          {
+            time : 1.8820763e-03
+            num_trapezoids : 127008
+            result : 4.00372090028918e+03
+            abs_true_error : 3.443032e-11 is NOT less than criteria
+            num_processors : 14
+          },
+          {
+            time : 1.9640923e-03
+            num_trapezoids : 127008
+            result : 4.00372090028918e+03
+            abs_true_error : 3.443032e-11 is NOT less than criteria
+            num_processors : 14
+          },
+
+          **** p = 14 , speedup = 13.136052454408993 , efficiency = 0.9382894610292138 ****
+
+]
+
+[
+          {
+            time : 1.6508102e-03
+            num_trapezoids : 127008
+            result : 4.00361815155711e+03
+            abs_true_error : 2.566393e-05 is NOT less than criteria
+            num_processors : 20
+          },
+          {
+            time : 1.5020370e-03
+            num_trapezoids : 127008
+            result : 4.00361815155711e+03
+            abs_true_error : 2.566393e-05 is NOT less than criteria
+            num_processors : 20
+          },
+          {
+            time : 1.6181469e-03
+            num_trapezoids : 127008
+            result : 4.00361815155711e+03
+            abs_true_error : 2.566393e-05 is NOT less than criteria
+            num_processors : 20
+          },
+          {
+            time : 1.5308857e-03
+            num_trapezoids : 127008
+            result : 4.00361815155711e+03
+            abs_true_error : 2.566393e-05 is NOT less than criteria
+            num_processors : 20
+          },
+          {
+            time : 1.5149117e-03
+            num_trapezoids : 127008
+            result : 4.00361815155711e+03
+            abs_true_error : 2.566393e-05 is NOT less than criteria
+            num_processors : 20
+          },
+
+          **** p = 20 , speedup = 16.45968308370566 , efficiency = 0.8229841541852829 ****
+
+]
+
+
+******** n = 254017 ********=
+
+
+[
+          {
+            time : 4.9298048e-02
+            num_trapezoids : 254017
+            result : 4.00372090018576e+03
+            abs_true_error : 8.601276e-12 is NOT less than criteria
+            num_processors : 1
+          },
+          {
+            time : 4.9288034e-02
+            num_trapezoids : 254017
+            result : 4.00372090018576e+03
+            abs_true_error : 8.601276e-12 is NOT less than criteria
+            num_processors : 1
+          },
+          {
+            time : 4.9466848e-02
+            num_trapezoids : 254017
+            result : 4.00372090018576e+03
+            abs_true_error : 8.601276e-12 is NOT less than criteria
+            num_processors : 1
+          },
+          {
+            time : 4.9259186e-02
+            num_trapezoids : 254017
+            result : 4.00372090018576e+03
+            abs_true_error : 8.601276e-12 is NOT less than criteria
+            num_processors : 1
+          },
+          {
+            time : 4.9611807e-02
+            num_trapezoids : 254017
+            result : 4.00372090018576e+03
+            abs_true_error : 8.601276e-12 is NOT less than criteria
+            num_processors : 1
+          },
+
+          **** p = 1 , speedup = 1.0 , efficiency = 1.0 ****
+
+]
+
+[
+          {
+            time : 2.4646044e-02
+            num_trapezoids : 254017
+            result : 4.00371443788501e+03
+            abs_true_error : 1.614068e-06 is NOT less than criteria
+            num_processors : 2
+          },
+          {
+            time : 2.4665117e-02
+            num_trapezoids : 254017
+            result : 4.00371443788501e+03
+            abs_true_error : 1.614068e-06 is NOT less than criteria
+            num_processors : 2
+          },
+          {
+            time : 2.5751114e-02
+            num_trapezoids : 254017
+            result : 4.00371443788501e+03
+            abs_true_error : 1.614068e-06 is NOT less than criteria
+            num_processors : 2
+          },
+          {
+            time : 2.4761915e-02
+            num_trapezoids : 254017
+            result : 4.00371443788501e+03
+            abs_true_error : 1.614068e-06 is NOT less than criteria
+            num_processors : 2
+          },
+          {
+            time : 2.4711132e-02
+            num_trapezoids : 254017
+            result : 4.00371443788501e+03
+            abs_true_error : 1.614068e-06 is NOT less than criteria
+            num_processors : 2
+          },
+
+          **** p = 2 , speedup = 1.998665019018874 , efficiency = 0.999332509509437 ****
+
+]
+
+[
+          {
+            time : 6.2861443e-03
+            num_trapezoids : 254017
+            result : 4.00371443788502e+03
+            abs_true_error : 1.614068e-06 is NOT less than criteria
+            num_processors : 8
+          },
+          {
+            time : 6.2460899e-03
+            num_trapezoids : 254017
+            result : 4.00371443788502e+03
+            abs_true_error : 1.614068e-06 is NOT less than criteria
+            num_processors : 8
+          },
+          {
+            time : 6.2339306e-03
+            num_trapezoids : 254017
+            result : 4.00371443788502e+03
+            abs_true_error : 1.614068e-06 is NOT less than criteria
+            num_processors : 8
+          },
+          {
+            time : 6.2170029e-03
+            num_trapezoids : 254017
+            result : 4.00371443788502e+03
+            abs_true_error : 1.614068e-06 is NOT less than criteria
+            num_processors : 8
+          },
+          {
+            time : 6.2258244e-03
+            num_trapezoids : 254017
+            result : 4.00371443788502e+03
+            abs_true_error : 1.614068e-06 is NOT less than criteria
+            num_processors : 8
+          },
+
+          **** p = 8 , speedup = 7.923301113467391 , efficiency = 0.9904126391834239 ****
+
+]
+
+[
+          {
+            time : 3.7519932e-03
+            num_trapezoids : 254017
+            result : 4.00371443788503e+03
+            abs_true_error : 1.614068e-06 is NOT less than criteria
+            num_processors : 14
+          },
+          {
+            time : 3.8979053e-03
+            num_trapezoids : 254017
+            result : 4.00371443788503e+03
+            abs_true_error : 1.614068e-06 is NOT less than criteria
+            num_processors : 14
+          },
+          {
+            time : 3.9210320e-03
+            num_trapezoids : 254017
+            result : 4.00371443788503e+03
+            abs_true_error : 1.614068e-06 is NOT less than criteria
+            num_processors : 14
+          },
+          {
+            time : 3.6840439e-03
+            num_trapezoids : 254017
+            result : 4.00371443788503e+03
+            abs_true_error : 1.614068e-06 is NOT less than criteria
+            num_processors : 14
+          },
+          {
+            time : 3.8139820e-03
+            num_trapezoids : 254017
+            result : 4.00371443788503e+03
+            abs_true_error : 1.614068e-06 is NOT less than criteria
+            num_processors : 14
+          },
+
+          **** p = 14 , speedup = 13.370955215815968 , efficiency = 0.9550682297011406 ****
+
+]
+
+[
+          {
+            time : 2.8400421e-03
+            num_trapezoids : 254017
+            result : 4.00361177594555e+03
+            abs_true_error : 2.725644e-05 is NOT less than criteria
+            num_processors : 20
+          },
+          {
+            time : 2.8529167e-03
+            num_trapezoids : 254017
+            result : 4.00361177594555e+03
+            abs_true_error : 2.725644e-05 is NOT less than criteria
+            num_processors : 20
+          },
+          {
+            time : 2.6330948e-03
+            num_trapezoids : 254017
+            result : 4.00361177594555e+03
+            abs_true_error : 2.725644e-05 is NOT less than criteria
+            num_processors : 20
+          },
+          {
+            time : 2.7871132e-03
+            num_trapezoids : 254017
+            result : 4.00361177594555e+03
+            abs_true_error : 2.725644e-05 is NOT less than criteria
+            num_processors : 20
+          },
+          {
+            time : 2.7520657e-03
+            num_trapezoids : 254017
+            result : 4.00361177594555e+03
+            abs_true_error : 2.725644e-05 is NOT less than criteria
+            num_processors : 20
+          },
+
+          **** p = 20 , speedup = 18.7077145874125 , efficiency = 0.935385729370625 ****
+
+]
+
+
+******** n = 508035 ********=
+
+
+[
+          {
+            time : 9.8493099e-02
+            num_trapezoids : 508035
+            result : 4.00372090015992e+03
+            abs_true_error : 2.146798e-12 is NOT less than criteria
+            num_processors : 1
+          },
+          {
+            time : 9.8505974e-02
+            num_trapezoids : 508035
+            result : 4.00372090015992e+03
+            abs_true_error : 2.146798e-12 is NOT less than criteria
+            num_processors : 1
+          },
+          {
+            time : 9.8587990e-02
+            num_trapezoids : 508035
+            result : 4.00372090015992e+03
+            abs_true_error : 2.146798e-12 is NOT less than criteria
+            num_processors : 1
+          },
+          {
+            time : 9.9032879e-02
+            num_trapezoids : 508035
+            result : 4.00372090015992e+03
+            abs_true_error : 2.146798e-12 is NOT less than criteria
+            num_processors : 1
+          },
+          {
+            time : 9.8491192e-02
+            num_trapezoids : 508035
+            result : 4.00372090015992e+03
+            abs_true_error : 2.146798e-12 is NOT less than criteria
+            num_processors : 1
+          },
+
+          **** p = 1 , speedup = 1.0 , efficiency = 1.0 ****
+
+]
+
+[
+          {
+            time : 4.9347162e-02
+            num_trapezoids : 508035
+            result : 4.00371766833930e+03
+            abs_true_error : 8.072028e-07 is NOT less than criteria
+            num_processors : 2
+          },
+          {
+            time : 4.9386978e-02
+            num_trapezoids : 508035
+            result : 4.00371766833930e+03
+            abs_true_error : 8.072028e-07 is NOT less than criteria
+            num_processors : 2
+          },
+          {
+            time : 5.1515102e-02
+            num_trapezoids : 508035
+            result : 4.00371766833930e+03
+            abs_true_error : 8.072028e-07 is NOT less than criteria
+            num_processors : 2
+          },
+          {
+            time : 4.9380064e-02
+            num_trapezoids : 508035
+            result : 4.00371766833930e+03
+            abs_true_error : 8.072028e-07 is NOT less than criteria
+            num_processors : 2
+          },
+          {
+            time : 4.9272060e-02
+            num_trapezoids : 508035
+            result : 4.00371766833930e+03
+            abs_true_error : 8.072028e-07 is NOT less than criteria
+            num_processors : 2
+          },
+
+          **** p = 2 , speedup = 1.998925800950884 , efficiency = 0.999462900475442 ****
+
+]
+
+[
+          {
+            time : 1.2435913e-02
+            num_trapezoids : 508035
+            result : 4.00371120875781e+03
+            abs_true_error : 2.420603e-06 is NOT less than criteria
+            num_processors : 8
+          },
+          {
+            time : 1.2657881e-02
+            num_trapezoids : 508035
+            result : 4.00371120875781e+03
+            abs_true_error : 2.420603e-06 is NOT less than criteria
+            num_processors : 8
+          },
+          {
+            time : 1.2702942e-02
+            num_trapezoids : 508035
+            result : 4.00371120875781e+03
+            abs_true_error : 2.420603e-06 is NOT less than criteria
+            num_processors : 8
+          },
+          {
+            time : 1.2506008e-02
+            num_trapezoids : 508035
+            result : 4.00371120875781e+03
+            abs_true_error : 2.420603e-06 is NOT less than criteria
+            num_processors : 8
+          },
+          {
+            time : 1.2554169e-02
+            num_trapezoids : 508035
+            result : 4.00371120875781e+03
+            abs_true_error : 2.420603e-06 is NOT less than criteria
+            num_processors : 8
+          },
+
+          **** p = 8 , speedup = 7.919900372413349 , efficiency = 0.9899875465516687 ****
+
+]
+
+[
+          {
+            time : 7.3430538e-03
+            num_trapezoids : 508035
+            result : 4.00371120875782e+03
+            abs_true_error : 2.420603e-06 is NOT less than criteria
+            num_processors : 14
+          },
+          {
+            time : 7.3111057e-03
+            num_trapezoids : 508035
+            result : 4.00371120875782e+03
+            abs_true_error : 2.420603e-06 is NOT less than criteria
+            num_processors : 14
+          },
+          {
+            time : 7.4529648e-03
+            num_trapezoids : 508035
+            result : 4.00371120875782e+03
+            abs_true_error : 2.420603e-06 is NOT less than criteria
+            num_processors : 14
+          },
+          {
+            time : 7.3490143e-03
+            num_trapezoids : 508035
+            result : 4.00371120875782e+03
+            abs_true_error : 2.420603e-06 is NOT less than criteria
+            num_processors : 14
+          },
+          {
+            time : 8.0051422e-03
+            num_trapezoids : 508035
+            result : 4.00371120875782e+03
+            abs_true_error : 2.420603e-06 is NOT less than criteria
+            num_processors : 14
+          },
+
+          **** p = 14 , speedup = 13.471449605768933 , efficiency = 0.9622464004120667 ****
+
+]
+
+[
+          {
+            time : 5.3658485e-03
+            num_trapezoids : 508035
+            result : 4.00367256484834e+03
+            abs_true_error : 1.207274e-05 is NOT less than criteria
+            num_processors : 20
+          },
+          {
+            time : 5.3639412e-03
+            num_trapezoids : 508035
+            result : 4.00367256484834e+03
+            abs_true_error : 1.207274e-05 is NOT less than criteria
+            num_processors : 20
+          },
+          {
+            time : 5.2301884e-03
+            num_trapezoids : 508035
+            result : 4.00367256484834e+03
+            abs_true_error : 1.207274e-05 is NOT less than criteria
+            num_processors : 20
+          },
+          {
+            time : 5.6140423e-03
+            num_trapezoids : 508035
+            result : 4.00367256484834e+03
+            abs_true_error : 1.207274e-05 is NOT less than criteria
+            num_processors : 20
+          },
+          {
+            time : 5.2578449e-03
+            num_trapezoids : 508035
+            result : 4.00367256484834e+03
+            abs_true_error : 1.207274e-05 is NOT less than criteria
+            num_processors : 20
+          },
+
+          **** p = 20 , speedup = 18.831289519130898 , efficiency = 0.9415644759565449 ****
+
+]
+
+
+******** n = 1016071 ********=
+
+
+[
+          {
+            time : 2.0180917e-01
+            num_trapezoids : 1016071
+            result : 4.00372090015337e+03
+            abs_true_error : 5.113425e-13 is NOT less than criteria
+            num_processors : 1
+          },
+          {
+            time : 1.9681001e-01
+            num_trapezoids : 1016071
+            result : 4.00372090015337e+03
+            abs_true_error : 5.113425e-13 is NOT less than criteria
+            num_processors : 1
+          },
+          {
+            time : 1.9681406e-01
+            num_trapezoids : 1016071
+            result : 4.00372090015337e+03
+            abs_true_error : 5.113425e-13 is NOT less than criteria
+            num_processors : 1
+          },
+          {
+            time : 1.9692492e-01
+            num_trapezoids : 1016071
+            result : 4.00372090015337e+03
+            abs_true_error : 5.113425e-13 is NOT less than criteria
+            num_processors : 1
+          },
+          {
+            time : 1.9685698e-01
+            num_trapezoids : 1016071
+            result : 4.00372090015337e+03
+            abs_true_error : 5.113425e-13 is NOT less than criteria
+            num_processors : 1
+          },
+
+          **** p = 1 , speedup = 1.0 , efficiency = 1.0 ****
+
+]
+
+[
+          {
+            time : 9.8497868e-02
+            num_trapezoids : 1016071
+            result : 4.00371928407556e+03
+            abs_true_error : 4.036436e-07 is NOT less than criteria
+            num_processors : 2
+          },
+          {
+            time : 9.8582983e-02
+            num_trapezoids : 1016071
+            result : 4.00371928407556e+03
+            abs_true_error : 4.036436e-07 is NOT less than criteria
+            num_processors : 2
+          },
+          {
+            time : 9.8464966e-02
+            num_trapezoids : 1016071
+            result : 4.00371928407556e+03
+            abs_true_error : 4.036436e-07 is NOT less than criteria
+            num_processors : 2
+          },
+          {
+            time : 9.8495960e-02
+            num_trapezoids : 1016071
+            result : 4.00371928407556e+03
+            abs_true_error : 4.036436e-07 is NOT less than criteria
+            num_processors : 2
+          },
+          {
+            time : 9.8667145e-02
+            num_trapezoids : 1016071
+            result : 4.00371928407556e+03
+            abs_true_error : 4.036436e-07 is NOT less than criteria
+            num_processors : 2
+          },
+
+          **** p = 2 , speedup = 1.9987820845842774 , efficiency = 0.9993910422921387 ****
+
+]
+
+[
+          {
+            time : 2.4767876e-02
+            num_trapezoids : 1016071
+            result : 4.00370959471276e+03
+            abs_true_error : 2.823741e-06 is NOT less than criteria
+            num_processors : 8
+          },
+          {
+            time : 2.5306940e-02
+            num_trapezoids : 1016071
+            result : 4.00370959471276e+03
+            abs_true_error : 2.823741e-06 is NOT less than criteria
+            num_processors : 8
+          },
+          {
+            time : 2.4781942e-02
+            num_trapezoids : 1016071
+            result : 4.00370959471276e+03
+            abs_true_error : 2.823741e-06 is NOT less than criteria
+            num_processors : 8
+          },
+          {
+            time : 2.4804115e-02
+            num_trapezoids : 1016071
+            result : 4.00370959471276e+03
+            abs_true_error : 2.823741e-06 is NOT less than criteria
+            num_processors : 8
+          },
+          {
+            time : 2.5561094e-02
+            num_trapezoids : 1016071
+            result : 4.00370959471276e+03
+            abs_true_error : 2.823741e-06 is NOT less than criteria
+            num_processors : 8
+          },
+
+          **** p = 8 , speedup = 7.946180366859072 , efficiency = 0.993272545857384 ****
+
+]
+
+[
+          {
+            time : 1.5098095e-02
+            num_trapezoids : 1016071
+            result : 4.00370959471277e+03
+            abs_true_error : 2.823741e-06 is NOT less than criteria
+            num_processors : 14
+          },
+          {
+            time : 1.4441013e-02
+            num_trapezoids : 1016071
+            result : 4.00370959471277e+03
+            abs_true_error : 2.823741e-06 is NOT less than criteria
+            num_processors : 14
+          },
+          {
+            time : 1.5310049e-02
+            num_trapezoids : 1016071
+            result : 4.00370959471277e+03
+            abs_true_error : 2.823741e-06 is NOT less than criteria
+            num_processors : 14
+          },
+          {
+            time : 1.4906883e-02
+            num_trapezoids : 1016071
+            result : 4.00370959471277e+03
+            abs_true_error : 2.823741e-06 is NOT less than criteria
+            num_processors : 14
+          },
+          {
+            time : 1.4256001e-02
+            num_trapezoids : 1016071
+            result : 4.00370959471277e+03
+            abs_true_error : 2.823741e-06 is NOT less than criteria
+            num_processors : 14
+          },
+
+          **** p = 14 , speedup = 13.805414996814324 , efficiency = 0.9861010712010232 ****
+
+]
+
+[
+          {
+            time : 1.0476112e-02
+            num_trapezoids : 1016071
+            result : 4.00370314190178e+03
+            abs_true_error : 4.435456e-06 is NOT less than criteria
+            num_processors : 20
+          },
+          {
+            time : 1.0531187e-02
+            num_trapezoids : 1016071
+            result : 4.00370314190178e+03
+            abs_true_error : 4.435456e-06 is NOT less than criteria
+            num_processors : 20
+          },
+          {
+            time : 1.0373116e-02
+            num_trapezoids : 1016071
+            result : 4.00370314190178e+03
+            abs_true_error : 4.435456e-06 is NOT less than criteria
+            num_processors : 20
+          },
+          {
+            time : 1.0200977e-02
+            num_trapezoids : 1016071
+            result : 4.00370314190178e+03
+            abs_true_error : 4.435456e-06 is NOT less than criteria
+            num_processors : 20
+          },
+          {
+            time : 1.0349035e-02
+            num_trapezoids : 1016071
+            result : 4.00370314190178e+03
+            abs_true_error : 4.435456e-06 is NOT less than criteria
+            num_processors : 20
+          },
+
+          **** p = 20 , speedup = 19.293251028798515 , efficiency = 0.9646625514399257 ****
+
+]
+
+
+******** n = 4064286 ********=
+
+
+[
+          {
+            time : 7.8690195e-01
+            num_trapezoids : 4064286
+            result : 4.00372090015134e+03
+            abs_true_error : 4.202504e-15 is less than criteria
+            num_processors : 1
+          },
+          {
+            time : 7.8682399e-01
+            num_trapezoids : 4064286
+            result : 4.00372090015134e+03
+            abs_true_error : 4.202504e-15 is less than criteria
+            num_processors : 1
+          },
+          {
+            time : 7.8689194e-01
+            num_trapezoids : 4064286
+            result : 4.00372090015134e+03
+            abs_true_error : 4.202504e-15 is less than criteria
+            num_processors : 1
+          },
+          {
+            time : 7.8672409e-01
+            num_trapezoids : 4064286
+            result : 4.00372090015134e+03
+            abs_true_error : 4.202504e-15 is less than criteria
+            num_processors : 1
+          },
+          {
+            time : 7.8683090e-01
+            num_trapezoids : 4064286
+            result : 4.00372090015134e+03
+            abs_true_error : 4.202504e-15 is less than criteria
+            num_processors : 1
+          },
+
+          **** p = 1 , speedup = 1.0 , efficiency = 1.0 ****
+
+]
+
+[
+          {
+            time : 3.9360809e-01
+            num_trapezoids : 4064286
+            result : 4.00372090015146e+03
+            abs_true_error : 3.418794e-14 is NOT less than criteria
+            num_processors : 2
+          },
+          {
+            time : 3.9367318e-01
+            num_trapezoids : 4064286
+            result : 4.00372090015146e+03
+            abs_true_error : 3.418794e-14 is NOT less than criteria
+            num_processors : 2
+          },
+          {
+            time : 3.9476204e-01
+            num_trapezoids : 4064286
+            result : 4.00372090015146e+03
+            abs_true_error : 3.418794e-14 is NOT less than criteria
+            num_processors : 2
+          },
+          {
+            time : 4.0171599e-01
+            num_trapezoids : 4064286
+            result : 4.00372090015146e+03
+            abs_true_error : 3.418794e-14 is NOT less than criteria
+            num_processors : 2
+          },
+          {
+            time : 3.9369392e-01
+            num_trapezoids : 4064286
+            result : 4.00372090015146e+03
+            abs_true_error : 3.418794e-14 is NOT less than criteria
+            num_processors : 2
+          },
+
+          **** p = 2 , speedup = 1.9987497970379622 , efficiency = 0.9993748985189811 ****
+
+]
+
+[
+          {
+            time : 1.0586190e-01
+            num_trapezoids : 4064286
+            result : 4.00371847616269e+03
+            abs_true_error : 6.054343e-07 is NOT less than criteria
+            num_processors : 8
+          },
+          {
+            time : 9.9101782e-02
+            num_trapezoids : 4064286
+            result : 4.00371847616269e+03
+            abs_true_error : 6.054343e-07 is NOT less than criteria
+            num_processors : 8
+          },
+          {
+            time : 9.9011898e-02
+            num_trapezoids : 4064286
+            result : 4.00371847616269e+03
+            abs_true_error : 6.054343e-07 is NOT less than criteria
+            num_processors : 8
+          },
+          {
+            time : 1.0174298e-01
+            num_trapezoids : 4064286
+            result : 4.00371847616269e+03
+            abs_true_error : 6.054343e-07 is NOT less than criteria
+            num_processors : 8
+          },
+          {
+            time : 9.8541975e-02
+            num_trapezoids : 4064286
+            result : 4.00371847616269e+03
+            abs_true_error : 6.054343e-07 is NOT less than criteria
+            num_processors : 8
+          },
+
+          **** p = 8 , speedup = 7.983644431725668 , efficiency = 0.9979555539657085 ****
+
+]
+
+[
+          {
+            time : 5.6811094e-02
+            num_trapezoids : 4064286
+            result : 4.00372009207061e+03
+            abs_true_error : 2.018325e-07 is NOT less than criteria
+            num_processors : 14
+          },
+          {
+            time : 5.7843924e-02
+            num_trapezoids : 4064286
+            result : 4.00372009207061e+03
+            abs_true_error : 2.018325e-07 is NOT less than criteria
+            num_processors : 14
+          },
+          {
+            time : 5.6734800e-02
+            num_trapezoids : 4064286
+            result : 4.00372009207061e+03
+            abs_true_error : 2.018325e-07 is NOT less than criteria
+            num_processors : 14
+          },
+          {
+            time : 5.6645155e-02
+            num_trapezoids : 4064286
+            result : 4.00372009207061e+03
+            abs_true_error : 2.018325e-07 is NOT less than criteria
+            num_processors : 14
+          },
+          {
+            time : 6.0836077e-02
+            num_trapezoids : 4064286
+            result : 4.00372009207061e+03
+            abs_true_error : 2.018325e-07 is NOT less than criteria
+            num_processors : 14
+          },
+
+          **** p = 14 , speedup = 13.888638666449054 , efficiency = 0.9920456190320753 ****
+
+]
+
+[
+          {
+            time : 4.0181875e-02
+            num_trapezoids : 4064286
+            result : 4.00371847616269e+03
+            abs_true_error : 6.054343e-07 is NOT less than criteria
+            num_processors : 20
+          },
+          {
+            time : 3.9764881e-02
+            num_trapezoids : 4064286
+            result : 4.00371847616269e+03
+            abs_true_error : 6.054343e-07 is NOT less than criteria
+            num_processors : 20
+          },
+          {
+            time : 4.2313099e-02
+            num_trapezoids : 4064286
+            result : 4.00371847616269e+03
+            abs_true_error : 6.054343e-07 is NOT less than criteria
+            num_processors : 20
+          },
+          {
+            time : 4.0555000e-02
+            num_trapezoids : 4064286
+            result : 4.00371847616269e+03
+            abs_true_error : 6.054343e-07 is NOT less than criteria
+            num_processors : 20
+          },
+          {
+            time : 4.1640997e-02
+            num_trapezoids : 4064286
+            result : 4.00371847616269e+03
+            abs_true_error : 6.054343e-07 is NOT less than criteria
+            num_processors : 20
+          },
+
+          **** p = 20 , speedup = 19.784394425825138 , efficiency = 0.9892197212912569 ****
+
+]
+
+
+******** n = 8128572 ********=
+
+
+[
+          {
+            time : 1.5734391
+            num_trapezoids : 8128572
+            result : 4.00372090015143e+03
+            abs_true_error : 2.589651e-14 is NOT less than criteria
+            num_processors : 1
+          },
+          {
+            time : 1.5735722
+            num_trapezoids : 8128572
+            result : 4.00372090015143e+03
+            abs_true_error : 2.589651e-14 is NOT less than criteria
+            num_processors : 1
+          },
+          {
+            time : 1.5735822
+            num_trapezoids : 8128572
+            result : 4.00372090015143e+03
+            abs_true_error : 2.589651e-14 is NOT less than criteria
+            num_processors : 1
+          },
+          {
+            time : 1.5734951
+            num_trapezoids : 8128572
+            result : 4.00372090015143e+03
+            abs_true_error : 2.589651e-14 is NOT less than criteria
+            num_processors : 1
+          },
+          {
+            time : 1.5735221
+            num_trapezoids : 8128572
+            result : 4.00372090015143e+03
+            abs_true_error : 2.589651e-14 is NOT less than criteria
+            num_processors : 1
+          },
+
+          **** p = 1 , speedup = 1.0 , efficiency = 1.0 ****
+
+]
+
+[
+          {
+            time : 7.8704810e-01
+            num_trapezoids : 8128572
+            result : 4.00372090015114e+03
+            abs_true_error : 4.770410e-14 is NOT less than criteria
+            num_processors : 2
+          },
+          {
+            time : 7.8702211e-01
+            num_trapezoids : 8128572
+            result : 4.00372090015114e+03
+            abs_true_error : 4.770410e-14 is NOT less than criteria
+            num_processors : 2
+          },
+          {
+            time : 7.9139996e-01
+            num_trapezoids : 8128572
+            result : 4.00372090015114e+03
+            abs_true_error : 4.770410e-14 is NOT less than criteria
+            num_processors : 2
+          },
+          {
+            time : 7.8700089e-01
+            num_trapezoids : 8128572
+            result : 4.00372090015114e+03
+            abs_true_error : 4.770410e-14 is NOT less than criteria
+            num_processors : 2
+          },
+          {
+            time : 7.8957891e-01
+            num_trapezoids : 8128572
+            result : 4.00372090015114e+03
+            abs_true_error : 4.770410e-14 is NOT less than criteria
+            num_processors : 2
+          },
+
+          **** p = 2 , speedup = 1.999285032574741 , efficiency = 0.9996425162873706 ****
+
+]
+
+[
+          {
+            time : 1.9694614e-01
+            num_trapezoids : 8128572
+            result : 4.00372009207055e+03
+            abs_true_error : 2.018325e-07 is NOT less than criteria
+            num_processors : 8
+          },
+          {
+            time : 2.1723795e-01
+            num_trapezoids : 8128572
+            result : 4.00372009207055e+03
+            abs_true_error : 2.018325e-07 is NOT less than criteria
+            num_processors : 8
+          },
+          {
+            time : 1.9770002e-01
+            num_trapezoids : 8128572
+            result : 4.00372009207055e+03
+            abs_true_error : 2.018325e-07 is NOT less than criteria
+            num_processors : 8
+          },
+          {
+            time : 2.0693493e-01
+            num_trapezoids : 8128572
+            result : 4.00372009207055e+03
+            abs_true_error : 2.018325e-07 is NOT less than criteria
+            num_processors : 8
+          },
+          {
+            time : 1.9802403e-01
+            num_trapezoids : 8128572
+            result : 4.00372009207055e+03
+            abs_true_error : 2.018325e-07 is NOT less than criteria
+            num_processors : 8
+          },
+
+          **** p = 8 , speedup = 7.989184758838128 , efficiency = 0.998648094854766 ****
+
+]
+
+[
+          {
+            time : 1.1286497e-01
+            num_trapezoids : 8128572
+            result : 4.00372009207054e+03
+            abs_true_error : 2.018325e-07 is NOT less than criteria
+            num_processors : 14
+          },
+          {
+            time : 1.1796403e-01
+            num_trapezoids : 8128572
+            result : 4.00372009207054e+03
+            abs_true_error : 2.018325e-07 is NOT less than criteria
+            num_processors : 14
+          },
+          {
+            time : 1.1709309e-01
+            num_trapezoids : 8128572
+            result : 4.00372009207054e+03
+            abs_true_error : 2.018325e-07 is NOT less than criteria
+            num_processors : 14
+          },
+          {
+            time : 1.1277795e-01
+            num_trapezoids : 8128572
+            result : 4.00372009207054e+03
+            abs_true_error : 2.018325e-07 is NOT less than criteria
+            num_processors : 14
+          },
+          {
+            time : 1.1307597e-01
+            num_trapezoids : 8128572
+            result : 4.00372009207054e+03
+            abs_true_error : 2.018325e-07 is NOT less than criteria
+            num_processors : 14
+          },
+
+          **** p = 14 , speedup = 13.95165544328479 , efficiency = 0.9965468173774851 ****
+
+]
+
+[
+          {
+            time : 8.4768057e-02
+            num_trapezoids : 8128572
+            result : 4.00371847616262e+03
+            abs_true_error : 6.054344e-07 is NOT less than criteria
+            num_processors : 20
+          },
+          {
+            time : 7.9207897e-02
+            num_trapezoids : 8128572
+            result : 4.00371847616262e+03
+            abs_true_error : 6.054344e-07 is NOT less than criteria
+            num_processors : 20
+          },
+          {
+            time : 8.4671021e-02
+            num_trapezoids : 8128572
+            result : 4.00371847616262e+03
+            abs_true_error : 6.054344e-07 is NOT less than criteria
+            num_processors : 20
+          },
+          {
+            time : 7.9342127e-02
+            num_trapezoids : 8128572
+            result : 4.00371847616262e+03
+            abs_true_error : 6.054344e-07 is NOT less than criteria
+            num_processors : 20
+          },
+          {
+            time : 8.6860180e-02
+            num_trapezoids : 8128572
+            result : 4.00371847616262e+03
+            abs_true_error : 6.054344e-07 is NOT less than criteria
+            num_processors : 20
+          },
+
+          **** p = 20 , speedup = 19.864674604351634 , efficiency = 0.9932337302175818 ****
+
+]
+
+
+******** n = 16257144 ********=
+
+
+[
+          {
+            time : 3.1466088
+            num_trapezoids : 16257144
+            result : 4.00372090015164e+03
+            abs_true_error : 7.837102e-14 is NOT less than criteria
+            num_processors : 1
+          },
+          {
+            time : 3.1467140
+            num_trapezoids : 16257144
+            result : 4.00372090015164e+03
+            abs_true_error : 7.837102e-14 is NOT less than criteria
+            num_processors : 1
+          },
+          {
+            time : 3.1470079
+            num_trapezoids : 16257144
+            result : 4.00372090015164e+03
+            abs_true_error : 7.837102e-14 is NOT less than criteria
+            num_processors : 1
+          },
+          {
+            time : 3.1467249
+            num_trapezoids : 16257144
+            result : 4.00372090015164e+03
+            abs_true_error : 7.837102e-14 is NOT less than criteria
+            num_processors : 1
+          },
+          {
+            time : 3.1467869
+            num_trapezoids : 16257144
+            result : 4.00372090015164e+03
+            abs_true_error : 7.837102e-14 is NOT less than criteria
+            num_processors : 1
+          },
+
+          **** p = 1 , speedup = 1.0 , efficiency = 1.0 ****
+
+]
+
+[
+          {
+            time : 1.5740242
+            num_trapezoids : 16257144
+            result : 4.00372090015166e+03
+            abs_true_error : 8.291426e-14 is NOT less than criteria
+            num_processors : 2
+          },
+          {
+            time : 1.5828049
+            num_trapezoids : 16257144
+            result : 4.00372090015166e+03
+            abs_true_error : 8.291426e-14 is NOT less than criteria
+            num_processors : 2
+          },
+          {
+            time : 1.5768390
+            num_trapezoids : 16257144
+            result : 4.00372090015166e+03
+            abs_true_error : 8.291426e-14 is NOT less than criteria
+            num_processors : 2
+          },
+          {
+            time : 1.5743301
+            num_trapezoids : 16257144
+            result : 4.00372090015166e+03
+            abs_true_error : 8.291426e-14 is NOT less than criteria
+            num_processors : 2
+          },
+          {
+            time : 1.5741072
+            num_trapezoids : 16257144
+            result : 4.00372090015166e+03
+            abs_true_error : 8.291426e-14 is NOT less than criteria
+            num_processors : 2
+          },
+
+          **** p = 2 , speedup = 1.9990854016094544 , efficiency = 0.9995427008047272 ****
+
+]
+
+[
+          {
+            time : 3.9454484e-01
+            num_trapezoids : 16257144
+            result : 4.00372090015129e+03
+            abs_true_error : 9.654400e-15 is NOT less than criteria
+            num_processors : 8
+          },
+          {
+            time : 3.9600611e-01
+            num_trapezoids : 16257144
+            result : 4.00372090015129e+03
+            abs_true_error : 9.654400e-15 is NOT less than criteria
+            num_processors : 8
+          },
+          {
+            time : 4.0425205e-01
+            num_trapezoids : 16257144
+            result : 4.00372090015129e+03
+            abs_true_error : 9.654400e-15 is NOT less than criteria
+            num_processors : 8
+          },
+          {
+            time : 3.9540982e-01
+            num_trapezoids : 16257144
+            result : 4.00372090015129e+03
+            abs_true_error : 9.654400e-15 is NOT less than criteria
+            num_processors : 8
+          },
+          {
+            time : 4.2348504e-01
+            num_trapezoids : 16257144
+            result : 4.00372090015129e+03
+            abs_true_error : 9.654400e-15 is NOT less than criteria
+            num_processors : 8
+          },
+
+          **** p = 8 , speedup = 7.975288182706939 , efficiency = 0.9969110228383674 ****
+
+]
+
+[
+          {
+            time : 2.3023605e-01
+            num_trapezoids : 16257144
+            result : 4.00372009207051e+03
+            abs_true_error : 2.018325e-07 is NOT less than criteria
+            num_processors : 14
+          },
+          {
+            time : 2.3051715e-01
+            num_trapezoids : 16257144
+            result : 4.00372009207051e+03
+            abs_true_error : 2.018325e-07 is NOT less than criteria
+            num_processors : 14
+          },
+          {
+            time : 2.2545886e-01
+            num_trapezoids : 16257144
+            result : 4.00372009207051e+03
+            abs_true_error : 2.018325e-07 is NOT less than criteria
+            num_processors : 14
+          },
+          {
+            time : 2.2545695e-01
+            num_trapezoids : 16257144
+            result : 4.00372009207051e+03
+            abs_true_error : 2.018325e-07 is NOT less than criteria
+            num_processors : 14
+          },
+          {
+            time : 2.2542095e-01
+            num_trapezoids : 16257144
+            result : 4.00372009207051e+03
+            abs_true_error : 2.018325e-07 is NOT less than criteria
+            num_processors : 14
+          },
+
+          **** p = 14 , speedup = 13.95881261258104 , efficiency = 0.9970580437557885 ****
+
+]
+
+[
+          {
+            time : 1.6934395e-01
+            num_trapezoids : 16257144
+            result : 4.00372049610035e+03
+            abs_true_error : 1.009189e-07 is NOT less than criteria
+            num_processors : 20
+          },
+          {
+            time : 1.6127205e-01
+            num_trapezoids : 16257144
+            result : 4.00372049610035e+03
+            abs_true_error : 1.009189e-07 is NOT less than criteria
+            num_processors : 20
+          },
+          {
+            time : 1.5857601e-01
+            num_trapezoids : 16257144
+            result : 4.00372049610035e+03
+            abs_true_error : 1.009189e-07 is NOT less than criteria
+            num_processors : 20
+          },
+          {
+            time : 1.6593218e-01
+            num_trapezoids : 16257144
+            result : 4.00372049610035e+03
+            abs_true_error : 1.009189e-07 is NOT less than criteria
+            num_processors : 20
+          },
+          {
+            time : 1.6185713e-01
+            num_trapezoids : 16257144
+            result : 4.00372049610035e+03
+            abs_true_error : 1.009189e-07 is NOT less than criteria
+            num_processors : 20
+          },
+
+          **** p = 20 , speedup = 19.84290561983493 , efficiency = 0.9921452809917465 ****
+
+]
+
+
+******** n = 32514288 ********=
+
+
+[
+          {
+            time : 6.3097980
+            num_trapezoids : 32514288
+            result : 4.00372090015047e+03
+            abs_true_error : 2.131919e-13 is NOT less than criteria
+            num_processors : 1
+          },
+          {
+            time : 6.2931221
+            num_trapezoids : 32514288
+            result : 4.00372090015047e+03
+            abs_true_error : 2.131919e-13 is NOT less than criteria
+            num_processors : 1
+          },
+          {
+            time : 6.3275859
+            num_trapezoids : 32514288
+            result : 4.00372090015047e+03
+            abs_true_error : 2.131919e-13 is NOT less than criteria
+            num_processors : 1
+          },
+          {
+            time : 6.3054140
+            num_trapezoids : 32514288
+            result : 4.00372090015047e+03
+            abs_true_error : 2.131919e-13 is NOT less than criteria
+            num_processors : 1
+          },
+          {
+            time : 6.2936442
+            num_trapezoids : 32514288
+            result : 4.00372090015047e+03
+            abs_true_error : 2.131919e-13 is NOT less than criteria
+            num_processors : 1
+          },
+
+          **** p = 1 , speedup = 1.0 , efficiency = 1.0 ****
+
+]
+
+[
+          {
+            time : 3.1646090
+            num_trapezoids : 32514288
+            result : 4.00372090015136e+03
+            abs_true_error : 9.540819e-15 is NOT less than criteria
+            num_processors : 2
+          },
+          {
+            time : 3.1481771
+            num_trapezoids : 32514288
+            result : 4.00372090015136e+03
+            abs_true_error : 9.540819e-15 is NOT less than criteria
+            num_processors : 2
+          },
+          {
+            time : 3.1478159
+            num_trapezoids : 32514288
+            result : 4.00372090015136e+03
+            abs_true_error : 9.540819e-15 is NOT less than criteria
+            num_processors : 2
+          },
+          {
+            time : 3.1576841
+            num_trapezoids : 32514288
+            result : 4.00372090015136e+03
+            abs_true_error : 9.540819e-15 is NOT less than criteria
+            num_processors : 2
+          },
+          {
+            time : 3.3823991
+            num_trapezoids : 32514288
+            result : 4.00372090015136e+03
+            abs_true_error : 9.540819e-15 is NOT less than criteria
+            num_processors : 2
+          },
+
+          **** p = 2 , speedup = 1.9992027170331022 , efficiency = 0.9996013585165511 ****
+
+]
+
+[
+          {
+            time : 8.4563184e-01
+            num_trapezoids : 32514288
+            result : 4.00372090015124e+03
+            abs_true_error : 2.078536e-14 is NOT less than criteria
+            num_processors : 8
+          },
+          {
+            time : 7.8745508e-01
+            num_trapezoids : 32514288
+            result : 4.00372090015124e+03
+            abs_true_error : 2.078536e-14 is NOT less than criteria
+            num_processors : 8
+          },
+          {
+            time : 7.9092193e-01
+            num_trapezoids : 32514288
+            result : 4.00372090015124e+03
+            abs_true_error : 2.078536e-14 is NOT less than criteria
+            num_processors : 8
+          },
+          {
+            time : 8.2901096e-01
+            num_trapezoids : 32514288
+            result : 4.00372090015124e+03
+            abs_true_error : 2.078536e-14 is NOT less than criteria
+            num_processors : 8
+          },
+          {
+            time : 7.8732705e-01
+            num_trapezoids : 32514288
+            result : 4.00372090015124e+03
+            abs_true_error : 2.078536e-14 is NOT less than criteria
+            num_processors : 8
+          },
+
+          **** p = 8 , speedup = 7.993021578516831 , efficiency = 0.9991276973146038 ****
+
+]
+
+[
+          {
+            time : 4.8514295e-01
+            num_trapezoids : 32514288
+            result : 4.00372079913653e+03
+            abs_true_error : 2.523023e-08 is NOT less than criteria
+            num_processors : 14
+          },
+          {
+            time : 4.5785093e-01
+            num_trapezoids : 32514288
+            result : 4.00372079913653e+03
+            abs_true_error : 2.523023e-08 is NOT less than criteria
+            num_processors : 14
+          },
+          {
+            time : 4.5698094e-01
+            num_trapezoids : 32514288
+            result : 4.00372079913653e+03
+            abs_true_error : 2.523023e-08 is NOT less than criteria
+            num_processors : 14
+          },
+          {
+            time : 4.8408890e-01
+            num_trapezoids : 32514288
+            result : 4.00372079913653e+03
+            abs_true_error : 2.523023e-08 is NOT less than criteria
+            num_processors : 14
+          },
+          {
+            time : 4.5287609e-01
+            num_trapezoids : 32514288
+            result : 4.00372079913653e+03
+            abs_true_error : 2.523023e-08 is NOT less than criteria
+            num_processors : 14
+          },
+
+          **** p = 14 , speedup = 13.895902740195446 , efficiency = 0.9925644814425318 ****
+
+]
+
+[
+          {
+            time : 3.1652904e-01
+            num_trapezoids : 32514288
+            result : 4.00372049610033e+03
+            abs_true_error : 1.009189e-07 is NOT less than criteria
+            num_processors : 20
+          },
+          {
+            time : 3.1933212e-01
+            num_trapezoids : 32514288
+            result : 4.00372049610033e+03
+            abs_true_error : 1.009189e-07 is NOT less than criteria
+            num_processors : 20
+          },
+          {
+            time : 3.3886194e-01
+            num_trapezoids : 32514288
+            result : 4.00372049610033e+03
+            abs_true_error : 1.009189e-07 is NOT less than criteria
+            num_processors : 20
+          },
+          {
+            time : 3.2238007e-01
+            num_trapezoids : 32514288
+            result : 4.00372049610033e+03
+            abs_true_error : 1.009189e-07 is NOT less than criteria
+            num_processors : 20
+          },
+          {
+            time : 3.2049203e-01
+            num_trapezoids : 32514288
+            result : 4.00372049610033e+03
+            abs_true_error : 1.009189e-07 is NOT less than criteria
+            num_processors : 20
+          },
+
+          **** p = 20 , speedup = 19.88165793571421 , efficiency = 0.9940828967857105 ****
+
+]
