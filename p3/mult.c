@@ -56,6 +56,24 @@ void print_matrix(Matrix *M, int n){
         printf("%s\n", "");
     }
 }
+void multiply_matricies(Matrix *A, Matrix *B, Matrix *C, Details *details){
+    if (strncmp(details->matrix_form, "ijk", 3) == 0){
+        for (int i = 0; i < details->n; i ++){ //rows
+            for (int j = 0; j < details->n; j ++){
+                for (int k = 0; k < details->n; k++){//column
+                    C[i][j] += A[i][k] * B[k][j];
+                }
+            }
+        }
+
+    }
+    else if (strncmp(details->matrix_form, "ikj", 3) == 0){
+
+    }
+    else if (strncmp(details->matrix_form, "kij", 3) == 0){
+
+    }
+}
 void get_user_input(Matrix **A, Matrix **B, Details *details) {
 	fscanf(stdin, "%s", details->matrix_form); //get form
     if (strncmp(details->matrix_form, "ijk", 3) != 0 && 
@@ -97,6 +115,6 @@ int main(int argc, char * argv[]){
 	Matrix *A, *B, *C;
 	Details details;
 	get_user_input(&A, &B, &details);
-    multiply_matricies(&A, &B, &C);
+    multiply_matricies(&A, &B, &C, &details);
     print_matrix(C, details.n);
 }
