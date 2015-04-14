@@ -69,9 +69,24 @@ void multiply_matricies(int *A, int *B, int *C, Details *details){
 
     }
     else if (strncmp(details->matrix_form, "ikj", 3) == 0){
-
+        for (int i = 0; i < n; i ++){ //rows
+            for (int k = 0; k < n; k ++){
+                for (int j = 0; j < n; j++){//column
+                    // C[i][j] += A[i][k] * B[k][j];
+                    (*(C + (i * n) + j)) += (*(A + (i*n) + k)) * (*(B + (k * n) + j));
+                }
+            }
+        }
     }
     else if (strncmp(details->matrix_form, "kij", 3) == 0){
+        for (int k = 0; k < n; k ++){ //rows
+            for (int i = 0; i < n; i ++){
+                for (int j = 0; j < n; j++){//column
+                    // C[i][j] += A[i][k] * B[k][j];
+                    (*(C + (i * n) + j)) += (*(A + (i*n) + k)) * (*(B + (k * n) + j));
+                }
+            }
+        }
 
     }
 }
