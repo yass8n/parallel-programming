@@ -58,10 +58,9 @@ void print_matrix(int *M, int n){
 void multiply_matricies(int *A, int *B, int *C, Details *details){
     int n = details->n;
     if (strncmp(details->matrix_form, "ijk", 3) == 0){
-        for (int i = 0; i < n; i ++){ //rows
+        for (int i = 0; i < n; i ++){ 
             for (int j = 0; j < n; j ++){
-                for (int k = 0; k < n; k++){//column
-                    // C[i][j] += A[i][k] * B[k][j];
+                for (int k = 0; k < n; k++){
                     (*(C + (i * n) + j)) += (*(A + (i*n) + k)) * (*(B + (k * n) + j));
                 }
             }
@@ -69,20 +68,18 @@ void multiply_matricies(int *A, int *B, int *C, Details *details){
 
     }
     else if (strncmp(details->matrix_form, "ikj", 3) == 0){
-        for (int i = 0; i < n; i ++){ //rows
+        for (int i = 0; i < n; i ++){ 
             for (int k = 0; k < n; k ++){
-                for (int j = 0; j < n; j++){//column
-                    // C[i][j] += A[i][k] * B[k][j];
+                for (int j = 0; j < n; j++){
                     (*(C + (i * n) + j)) += (*(A + (i*n) + k)) * (*(B + (k * n) + j));
                 }
             }
         }
     }
     else if (strncmp(details->matrix_form, "kij", 3) == 0){
-        for (int k = 0; k < n; k ++){ //rows
+        for (int k = 0; k < n; k ++){ 
             for (int i = 0; i < n; i ++){
-                for (int j = 0; j < n; j++){//column
-                    // C[i][j] += A[i][k] * B[k][j];
+                for (int j = 0; j < n; j++){
                     (*(C + (i * n) + j)) += (*(A + (i*n) + k)) * (*(B + (k * n) + j));
                 }
             }
@@ -100,10 +97,10 @@ void get_user_input(int **A, int **B, int **C, Details *details) {
     }
      
 	fscanf(stdin, "%s", details->flag); //get flag
-    if (strncmp(details->matrix_form, "I", 1) != 0 && 
-        strncmp(details->matrix_form, "i", 1) != 0 && 
-        strncmp(details->matrix_form, "r", 1) != 0 && 
-        strncmp(details->matrix_form, "R", 1) != 0){
+    if (strncmp(details->flag, "I", 1) != 0 && 
+        strncmp(details->flag, "i", 1) != 0 && 
+        strncmp(details->flag, "r", 1) != 0 && 
+        strncmp(details->flag, "R", 1) != 0){
         printf("%s\n", "Illegal flag. Must be 'I' or 'R'");
         exit(0);
     }
@@ -133,4 +130,7 @@ int main(int argc, char * argv[]){
 	get_user_input(&A, &B, &C, &details);
     multiply_matricies(A, B, C, &details);
     print_matrix(C, details.n);
+    free(A);
+    free(B);
+    free(C);
 }
