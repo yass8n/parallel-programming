@@ -59,7 +59,7 @@ void multiply_matricies(int *A, int *B, int *C, Details *details){
             for (int j = 0; j < details->n; j ++){
                 for (int k = 0; k < details->n; k++){//column
                     // C[i][j] += A[i][k] * B[k][j];
-                    // C
+                    // C + I
                 }
             }
         }
