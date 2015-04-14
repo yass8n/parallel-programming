@@ -13,14 +13,21 @@ I used the above reference for tips on how to structure my matrix
 #include <string.h>
 #include <strings.h>
 #include <assert.h>
+/* struct Details
+   Purpose: an object to hold the values that the user entered
 
+   Variables: 
+		   matrix_form: buffer for the ijk, ikj, or kij
+		   flag:        buffer for the flag (R or I)
+		   n:           The number of columns in a row
+*/
  typedef struct Details {
     char matrix_form[4];//buffer for the ijk, ikj, or kij
-    char flag[1];//buffer for the flag (R or I)
-    int n; //matrix is size n X n
+    char flag[1];       //buffer for the flag (R or I)
+    int n;              //matrix is size n X n
 } Details;
 /*
-  Purpose:      Allocate memory for the matricies
+  Purpose:      Allocate memory for the matricies and initialize the values to 0
   Input args:   A: pointer to Global_A matrix
   				B: pointer to Global_B matrix
   			    C: pointer to final_matrix 
@@ -32,12 +39,6 @@ I used the above reference for tips on how to structure my matrix
   			    a: pointer to ocal_a matrix (initialized to 0)
  */
 void create_matrices(int **A, int **B, int **C, int **a, int n){
-    *A = malloc(sizeof(int));
-    *B = malloc(sizeof(int));
-    *C = malloc(sizeof(int));
-    *a = malloc(sizeof(int));
-
-     //using calloc to zero initialize the buffer
     (*A) = calloc(sizeof(int), n*n); 
     (*B) = calloc(sizeof(int), n*n);
     (*C) = calloc(sizeof(int), n*n);
@@ -229,9 +230,10 @@ int main(){
     int row_times_col = (details->n * details->n);
 
     if (my_rank != 0){
-    	//using the value for n given to us through details objects passed from process 0
-    	//to create n X n matricies for all 4 relevant matricies
-    	// global_A, global_B, local_B, final_matrix;
+    	/*using the value for n given to us through details objects passed from process 0
+    	to create n X n matricies for all 4 relevant matricies
+    	global_A, global_B, local_B, final_matrix;
+    	*/
 	    create_matrices(&global_A, &global_B, &final_matrix, &local_A, details->n);
 	}
 	/* scatter global_A amongst the processors in the comm world */
