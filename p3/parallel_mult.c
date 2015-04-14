@@ -1,34 +1,36 @@
+/*
+Yaseen Aniss
+This is the Matrix Multiplication implementation using open MPI 
+
+http://stackoverflow.com/questions/2128728/allocate-matrix-in-c
+I used the above reference for tips on how to structure my matrix
+*/
 #include <stdlib.h>
 #include <stdio.h>
-#include <string.h>
-#include <strings.h>
-#include <assert.h>
 #include <time.h>
 #include <ctype.h>
 #include <mpi.h>
+#include <string.h>
+#include <strings.h>
+#include <assert.h>
 
-//http://stackoverflow.com/questions/2128728/allocate-matrix-in-c
-//using the above reference for a simulation of a matrix...example below
-/*
-arr[offset] where offset is = i * num_cols + j
-instead of arr[row][cols] //row major
-
-AND
-
-arr[offset] where offset is = i + num_rows * j
-instead of arr[cols][rows] //column major
-*/
-/*
- * Purpose: Build a derived datatype so that the three
- *          values can be sent in a single MPI message.
- * Input args:   g_values: pointer to the trapezoidal_values input data
- * Output args:  input_mpi_t_p:  the new MPI datatype that is created
- */
  typedef struct Details {
     char matrix_form[4];//buffer for the ijk, ikj, or kij
     char flag[1];//buffer for the flag (R or I)
     int n; //matrix is size n X n
 } Details;
+/*
+  Purpose:      Allocate memory for the matricies
+  Input args:   A: pointer to Global_A matrix
+  				B: pointer to Global_B matrix
+  			    C: pointer to final_matrix 
+  			    a: pointer to ocal_a matrix 
+
+  Output args:  A: pointer to Global_A matrix (initialized to 0)
+  				B: pointer to Global_B matrix (initialized to 0)
+  			    C: pointer to final_matrix (initialized to 0)
+  			    a: pointer to ocal_a matrix (initialized to 0)
+ */
 void create_matrices(int **A, int **B, int **C, int **a, int n){
     *A = malloc(sizeof(int));
     *B = malloc(sizeof(int));
@@ -41,11 +43,23 @@ void create_matrices(int **A, int **B, int **C, int **a, int n){
     (*C) = calloc(sizeof(int), n*n);
     (*a) = calloc(sizeof(int), n*n);
 }
+/*
+  Purpose:      Initialize the Matrix using random numbers
+  Input args:   n: The number of columns in a row
+
+  Output args:  M: A filled Matrix 
+ */
 void initialize_random_matrix(int **M, int n){
     for (int i = 0; i < (n*n); i++){
-        (*M)[i] = (rand() % 10);
+        (*M)[i] = (rand() % 10 - 5);
     }
 }
+/*
+  Purpose:      Initialize the Matrix using the data the user is entering
+  Input args:   n: The number of columns in a row
+
+  Output args:  M: A filled Matrix 
+ */
 void initialize_input_matrix(int **M, int n){
     int count = 0;
     int number = 0;
@@ -58,6 +72,12 @@ void initialize_input_matrix(int **M, int n){
         }
     }
 }
+
+/*
+  Purpose:      Print a Matrix with each row on its own line
+  Input args:   M: The Matrix to be printed
+				n: The number of columns in a row
+ */
 void print_matrix(int *M, int n){
     for (int i = 0; i < n; i ++){
         for (int j = 0; j < n; j++){
@@ -66,6 +86,16 @@ void print_matrix(int *M, int n){
         printf("%s\n", "");
     }
 }
+/*
+  Purpose:      Multilpy the Matricies A and B to produce a matrix C
+  Input args:   A: pointer to a local_A matrix that only has (n/comm_sz) rows filled
+				B: pointer to a filled Global_B matrix
+			    comm_sz: the size of the comm_world
+			    details: pointer to the filled input data that the user entered
+  
+  Output args:  C: pointer to a section of the "final_matrix" matrix that is the result of the 
+			    multiplication of A and B
+ */
 void multiply_matricies(int *A, int *B, int *C, Details *details, int comm_sz){
     int n = details->n;
     if (strncmp(details->matrix_form, "ijk", 3) == 0){
@@ -98,6 +128,16 @@ void multiply_matricies(int *A, int *B, int *C, Details *details, int comm_sz){
 
     }
 }
+/*
+  Purpose: Read in the users input and assign appropriate values to all the matricies 
+		   according to the data that was entered
+  
+  Output args:  A: pointer to an initialized and filled Global_A matrix
+  				B: pointer to an initialized and filled Global_B matrix
+  			    C: pointer to an initialized and empty final_matrix (all values are 0)
+  			    a: pointer to an initialized and empty local_a matrix (all values are 0)
+  			    details: pointer to the filled input data that the user entered
+ */
 void get_user_input(int **A, int **B, int**C, int **a, Details *details) {
 	fscanf(stdin, "%s", details->matrix_form); //get form
     if (strncmp(details->matrix_form, "ijk", 3) != 0 && 
@@ -133,6 +173,12 @@ void get_user_input(int **A, int **B, int**C, int **a, Details *details) {
 
 }
 
+/*
+  Purpose: Build a derived datatype so that the three
+           values can be sent in a single MPI message.
+  Input args:   details: pointer to the details input data
+  Output args:  input_details:  the new MPI datatype that is created
+ */
 static void build_mpi_type(Details *details, MPI_Datatype * input_details){
     int array_of_blocklengths[3] = {4, 1, 1};
     MPI_Datatype array_of_types[3] = {MPI_CHAR, MPI_CHAR, MPI_INT};
@@ -168,6 +214,12 @@ int main(){
   /* start the timer on rank 0 */
     if (my_rank == 0){
 		get_user_input(&global_A, &global_B, &final_matrix, &local_A, details);
+	    print_matrix(global_B, details->n);
+		puts("\n");
+
+        print_matrix(global_A, details->n);
+		puts("\n");
+
 		start_time = MPI_Wtime();
     }
 
