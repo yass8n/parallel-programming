@@ -5,51 +5,98 @@
 #include <assert.h>
 #include <time.h>
 #include <ctype.h>
+//http://stackoverflow.com/questions/2128728/allocate-matrix-in-c
+//using the above reference for a simulation of a matrix...example below
+/*
+arr[offset] where offset is = i * num_cols + j
+instead of arr[row][cols] //row major
 
-typedef struct matrix {
-    int rows;
-    int cols;
-    double * values;
-} matrix;
-typedef struct form_and_flag {
+AND
+
+arr[offset] where offset is = i + num_rows * j
+instead of arr[cols][rows] //column major
+*/
+
+typedef struct Matrix {
+    int * values;
+} Matrix;
+typedef struct Details {
     char matrix_form[4];//buffer for the ijk, ikj, or kij
     char flag[1];//buffer for the flag (R or I)
     int n; //matrix is size n X n
-} form_and_flag;
-void create_matrices(matrix **A, matrix **B, int n){
-    *A = malloc(sizeof(matrix));
-    *B = malloc(sizeof(matrix));
-    (*A)->rows = n;
-    (*B)->cols = n;
-    (*A)->values = calloc(sizeof(double), n*n);
-    (*B)->values = calloc(sizeof(double), n*n);
-	printf("%d in here\n", (*A)->rows);
-    (*A)->values[0] = 1.3333;
+} Details;
+void create_matrices(Matrix **A, Matrix **B, int n){
+    *A = malloc(sizeof(Matrix));
+    *B = malloc(sizeof(Matrix));
+    (*A)->values = calloc(sizeof(int), n*n); //using calloc to zero initialize the buffer
+    (*B)->values = calloc(sizeof(int), n*n);
 }
-void get_user_input(matrix **A, matrix **B, form_and_flag *form_flag) {
-	fscanf(stdin, "%s", form_flag->matrix_form); //get form
-	fscanf(stdin, "%s", form_flag->flag);
-	fscanf(stdin, "%d", &(form_flag->n));
-    if (form_flag->n < 2)
-    {
+void initialize_random_matrix(Matrix **M, int n){
+    for (int i = 0; i < (n*n); i++){
+        (*M)->values[i] = (rand() % 10);
+    }
+}
+void initialize_input_matrix(Matrix **M, int n){
+    int count = 0;
+    int number = 0;
+    while (!feof(stdin)){
+        fscanf(stdin, "%d", &number);
+        (*M)->values[count] = number;
+        count ++;
+        if (count == (n*n)){
+            break;
+        }
+    }
+}
+void print_matrix(Matrix *M, int n){
+    for (int i = 0; i < n; i ++){
+        for (int j = 0; j < n; j++){
+            printf("%d ", * ( M->values + (i * n) + j) ); 
+        }
+        printf("%s\n", "");
+    }
+}
+void get_user_input(Matrix **A, Matrix **B, Details *details) {
+	fscanf(stdin, "%s", details->matrix_form); //get form
+    if (strncmp(details->matrix_form, "ijk", 3) != 0 && 
+        strncmp(details->matrix_form, "ikj", 3) != 0 &&
+        strncmp(details->matrix_form, "kij", 3) != 0){
+        printf("%s\n", "Illegal matrix form. Must be 'ijk', 'ikj', or 'kij'");
+        exit(0);
+    }
+     
+	fscanf(stdin, "%s", details->flag); //get flag
+    if (strncmp(details->matrix_form, "I", 1) != 0 && 
+        strncmp(details->matrix_form, "i", 1) != 0 && 
+        strncmp(details->matrix_form, "r", 1) != 0 && 
+        strncmp(details->matrix_form, "R", 1) != 0){
+        printf("%s\n", "Illegal flag. Must be 'I' or 'R'");
+        exit(0);
+    }
+	fscanf(stdin, "%d", &(details->n)); //get N
+    if (details->n < 2){
         printf("%s\n", "Size Must be Greater than 1!");
         exit(0);
     }
-	int keep_scanning = 1;
-	create_matrices(A, B, form_flag->n);
-	printf("%d in here\n", (*A)->rows);
-	int j = form_flag->n * form_flag->n;
-	int i = form_flag->n * form_flag->n;
-	while (!feof(stdin) && keep_scanning == 1){
-		char form_buf[10] = "";
-		fscanf(stdin, "%3s", form_buf);
-	}
+
+	create_matrices(A, B, details->n);
+	int j = details->n * details->n;
+	int i = details->n * details->n;
+    if (strncmp(details->flag, "R", 1) == 0){
+        srand(time(NULL));
+        initialize_random_matrix(A,details->n);
+        initialize_random_matrix(B,details->n);
+    }else {
+        initialize_input_matrix(A,details->n );
+        initialize_input_matrix(B,details->n );
+    }
 
 }
 
 int main(int argc, char * argv[]){
-	matrix *A, *B, *C;
-	form_and_flag form_flag;
-	get_user_input(&A, &B, &form_flag);
-	printf("%d down here\n", A->values[0]);
+	Matrix *A, *B, *C;
+	Details details;
+	get_user_input(&A, &B, &details);
+    multiply_matricies(&A, &B, &C);
+    print_matrix(C, details.n);
 }
