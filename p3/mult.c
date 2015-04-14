@@ -22,11 +22,13 @@ typedef struct Details {
     char flag[1];//buffer for the flag (R or I)
     int n; //matrix is size n X n
 } Details;
-void create_matrices(int **A, int **B, int n){
+void create_matrices(int **A, int **B, int **C, int n){
     *A = malloc(sizeof(int));
     *B = malloc(sizeof(int));
+    *C = malloc(sizeof(int));
     (*A) = calloc(sizeof(int), n*n); //using calloc to zero initialize the buffer
     (*B) = calloc(sizeof(int), n*n);
+    (*C) = calloc(sizeof(int), n*n);
 }
 void initialize_random_matrix(int **M, int n){
     for (int i = 0; i < (n*n); i++){
@@ -54,12 +56,13 @@ void print_matrix(int *M, int n){
     }
 }
 void multiply_matricies(int *A, int *B, int *C, Details *details){
+    int n = details->n;
     if (strncmp(details->matrix_form, "ijk", 3) == 0){
-        for (int i = 0; i < details->n; i ++){ //rows
-            for (int j = 0; j < details->n; j ++){
-                for (int k = 0; k < details->n; k++){//column
+        for (int i = 0; i < n; i ++){ //rows
+            for (int j = 0; j < n; j ++){
+                for (int k = 0; k < n; k++){//column
                     // C[i][j] += A[i][k] * B[k][j];
-                    // C + I
+                    (*(C + (i * n) + j)) += (*(A + (i*n) + k)) * (*(B + (k * n) + j));
                 }
             }
         }
@@ -72,7 +75,7 @@ void multiply_matricies(int *A, int *B, int *C, Details *details){
 
     }
 }
-void get_user_input(int **A, int **B, Details *details) {
+void get_user_input(int **A, int **B, int **C, Details *details) {
 	fscanf(stdin, "%s", details->matrix_form); //get form
     if (strncmp(details->matrix_form, "ijk", 3) != 0 && 
         strncmp(details->matrix_form, "ikj", 3) != 0 &&
@@ -95,7 +98,7 @@ void get_user_input(int **A, int **B, Details *details) {
         exit(0);
     }
 
-	create_matrices(A, B, details->n);
+	create_matrices(A, B, C, details->n);
 	int j = details->n * details->n;
 	int i = details->n * details->n;
     if (strncmp(details->flag, "R", 1) == 0){
@@ -112,7 +115,7 @@ void get_user_input(int **A, int **B, Details *details) {
 int main(int argc, char * argv[]){
 	int *A, *B, *C;
 	Details details;
-	get_user_input(&A, &B, &details);
+	get_user_input(&A, &B, &C, &details);
     multiply_matricies(A, B, C, &details);
     print_matrix(C, details.n);
 }
