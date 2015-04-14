@@ -17,51 +17,49 @@ arr[offset] where offset is = i + num_rows * j
 instead of arr[cols][rows] //column major
 */
 
-typedef struct Matrix {
-    int * values;
-} Matrix;
 typedef struct Details {
     char matrix_form[4];//buffer for the ijk, ikj, or kij
     char flag[1];//buffer for the flag (R or I)
     int n; //matrix is size n X n
 } Details;
-void create_matrices(Matrix **A, Matrix **B, int n){
-    *A = malloc(sizeof(Matrix));
-    *B = malloc(sizeof(Matrix));
-    (*A)->values = calloc(sizeof(int), n*n); //using calloc to zero initialize the buffer
-    (*B)->values = calloc(sizeof(int), n*n);
+void create_matrices(int **A, int **B, int n){
+    *A = malloc(sizeof(int));
+    *B = malloc(sizeof(int));
+    (*A) = calloc(sizeof(int), n*n); //using calloc to zero initialize the buffer
+    (*B) = calloc(sizeof(int), n*n);
 }
-void initialize_random_matrix(Matrix **M, int n){
+void initialize_random_matrix(int **M, int n){
     for (int i = 0; i < (n*n); i++){
-        (*M)->values[i] = (rand() % 10);
+        (*M)[i] = (rand() % 10);
     }
 }
-void initialize_input_matrix(Matrix **M, int n){
+void initialize_input_matrix(int **M, int n){
     int count = 0;
     int number = 0;
     while (!feof(stdin)){
         fscanf(stdin, "%d", &number);
-        (*M)->values[count] = number;
+        (*M)[count] = number;
         count ++;
         if (count == (n*n)){
             break;
         }
     }
 }
-void print_matrix(Matrix *M, int n){
+void print_matrix(int *M, int n){
     for (int i = 0; i < n; i ++){
         for (int j = 0; j < n; j++){
-            printf("%d ", * ( M->values + (i * n) + j) ); 
+            printf("%d ", * ( M + (i * n) + j) ); 
         }
         printf("%s\n", "");
     }
 }
-void multiply_matricies(Matrix *A, Matrix *B, Matrix *C, Details *details){
+void multiply_matricies(int *A, int *B, int *C, Details *details){
     if (strncmp(details->matrix_form, "ijk", 3) == 0){
         for (int i = 0; i < details->n; i ++){ //rows
             for (int j = 0; j < details->n; j ++){
                 for (int k = 0; k < details->n; k++){//column
-                    C[i][j] += A[i][k] * B[k][j];
+                    // C[i][j] += A[i][k] * B[k][j];
+                    // C
                 }
             }
         }
@@ -74,7 +72,7 @@ void multiply_matricies(Matrix *A, Matrix *B, Matrix *C, Details *details){
 
     }
 }
-void get_user_input(Matrix **A, Matrix **B, Details *details) {
+void get_user_input(int **A, int **B, Details *details) {
 	fscanf(stdin, "%s", details->matrix_form); //get form
     if (strncmp(details->matrix_form, "ijk", 3) != 0 && 
         strncmp(details->matrix_form, "ikj", 3) != 0 &&
@@ -112,9 +110,9 @@ void get_user_input(Matrix **A, Matrix **B, Details *details) {
 }
 
 int main(int argc, char * argv[]){
-	Matrix *A, *B, *C;
+	int *A, *B, *C;
 	Details details;
 	get_user_input(&A, &B, &details);
-    multiply_matricies(&A, &B, &C, &details);
+    multiply_matricies(A, B, C, &details);
     print_matrix(C, details.n);
 }
