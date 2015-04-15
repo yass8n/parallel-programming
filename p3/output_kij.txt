@@ -1,0 +1,180 @@
+
+
+******** NUM PROCESSORS = 1 ********=
+
+
+[
+          {
+            num_processors : 1 processor(s)
+            time : 9.3131674e+02
+          },
+          {
+            num_processors : 1 processor(s)
+            time : 9.3244460e+02
+          },
+          {
+            num_processors : 1 processor(s)
+            time : 9.3124939e+02
+          },
+          {
+            num_processors : 1 processor(s)
+            time : 9.3166506e+02
+          },
+          {
+            num_processors : 1 processor(s)
+            time : 9.3153473e+02
+          },
+
+          **** p = 1 , speedup = 1.0 , efficiency = 1.0 ****
+
+]
+
+
+******** NUM PROCESSORS = 4 ********=
+
+
+[
+          {
+            num_processors : 4 processor(s)
+            time : 2.3485126e+02
+          },
+          {
+            num_processors : 4 processor(s)
+            time : 2.3555411e+02
+          },
+          {
+            num_processors : 4 processor(s)
+            time : 2.3547941e+02
+          },
+          {
+            num_processors : 4 processor(s)
+            time : 2.3483440e+02
+          },
+          {
+            num_processors : 4 processor(s)
+            time : 2.3518775e+02
+          },
+
+          **** p = 4 , speedup = 3.965557814357692 , efficiency = 0.991389453589423 ****
+
+]
+
+
+******** NUM PROCESSORS = 8 ********=
+
+
+[
+          {
+            num_processors : 8 processor(s)
+            time : 1.1892132e+02
+          },
+          {
+            num_processors : 8 processor(s)
+            time : 1.1924383e+02
+          },
+          {
+            num_processors : 8 processor(s)
+            time : 1.1890616e+02
+          },
+          {
+            num_processors : 8 processor(s)
+            time : 1.1926628e+02
+          },
+          {
+            num_processors : 8 processor(s)
+            time : 1.1919419e+02
+          },
+
+          **** p = 8 , speedup = 7.831801060601065 , efficiency = 0.9789751325751331 ****
+
+]
+
+
+******** NUM PROCESSORS = 12 ********=
+
+
+[
+          {
+            num_processors : 12 processor(s)
+            time : 8.0606154e+01
+          },
+          {
+            num_processors : 12 processor(s)
+            time : 8.0617480e+01
+          },
+          {
+            num_processors : 12 processor(s)
+            time : 8.0644684e+01
+          },
+          {
+            num_processors : 12 processor(s)
+            time : 8.0596913e+01
+          },
+          {
+            num_processors : 12 processor(s)
+            time : 8.0617037e+01
+          },
+
+          **** p = 12 , speedup = 11.554405191672787 , efficiency = 0.9628670993060656 ****
+
+]
+
+
+******** NUM PROCESSORS = 16 ********=
+
+
+[
+          {
+            num_processors : 16 processor(s)
+            time : 6.1127414e+01
+          },
+          {
+            num_processors : 16 processor(s)
+            time : 6.1252330e+01
+          },
+          {
+            num_processors : 16 processor(s)
+            time : 6.1300891e+01
+          },
+          {
+            num_processors : 16 processor(s)
+            time : 6.1263628e+01
+          },
+          {
+            num_processors : 16 processor(s)
+            time : 6.1247006e+01
+          },
+
+          **** p = 16 , speedup = 15.234562188415167 , efficiency = 0.9521601367759479 ****
+
+]
+
+
+******** NUM PROCESSORS = 20 ********=
+
+
+[
+          {
+            num_processors : 20 processor(s)
+            time : 4.9660248e+01
+          },
+          {
+            num_processors : 20 processor(s)
+            time : 4.9622691e+01
+          },
+          {
+            num_processors : 20 processor(s)
+            time : 4.9539667e+01
+          },
+          {
+            num_processors : 20 processor(s)
+            time : 4.9499813e+01
+          },
+          {
+            num_processors : 20 processor(s)
+            time : 4.9444644e+01
+          },
+
+          **** p = 20 , speedup = 18.834181311933403 , efficiency = 0.9417090655966701 ****
+
+]

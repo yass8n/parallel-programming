@@ -1,3 +1,7 @@
+/**
+Yaseen Aniss
+This is the serial matrix multiplication in C */
+
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>

@@ -5,13 +5,14 @@ require 'timeout'
 
 def write_to_cmd
   begin
-    result = Timeout::timeout(1) do
+    result = Timeout::timeout(2) do
       sleep(1)
     end
     puts "The result was #{result}"
     write_to_cmd
   rescue Timeout::Error
     puts "the calculation timed out"
+    write_to_cmd
   end
 end
 class MPIScript
