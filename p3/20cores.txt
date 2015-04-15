@@ -6,3 +6,5 @@ o251-07 slots=2
 o251-08 slots=2
 o251-09 slots=2
 o251-10 slots=2
+o251-11 slots=2
+o251-12 slots=2

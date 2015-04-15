@@ -220,6 +220,7 @@ int main(){
 		get_user_input(&global_A, &global_B, &final_matrix, &local_A, details);
 		start_time = MPI_Wtime();
     }
+
     /* Send the details from rank 0 to other processors/threads  */
     MPI_Bcast(details, 1, input_details, 0, MPI_COMM_WORLD);
 
@@ -242,7 +243,6 @@ int main(){
     the global_B we got from MPI_Bcast */
 	multiply_matricies(local_A, global_B, final_matrix, details, comm_sz);
 
-
 	/*  gathering all the data into final_matrix using process 0 */
 	MPI_Gather(final_matrix, (row_times_col) / comm_sz, MPI_INT, final_matrix, (row_times_col) / comm_sz , MPI_INT, 0,MPI_COMM_WORLD);
 
@@ -251,12 +251,6 @@ int main(){
         double elapsed_time = end_time - start_time;
 		printf("\nrunning on %d processor(s)\n""Elapsed time = %.7e seconds\n",
 			 comm_sz,elapsed_time);
-		/*
-		FILE *fp;
-		fp=fopen("out.txt", "a");
-		fprintf(fp, "%d ... %.7e\n", comm_sz, elapsed_time);
-        fclose(fp);
-        */
         if (strncmp(details->flag, "I", 1) == 0 || strncmp(details->flag, "i", 1) == 0){
 		    print_matrix(final_matrix, details->n);
         }

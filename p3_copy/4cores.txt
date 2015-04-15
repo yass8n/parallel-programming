@@ -1,4 +1,2 @@
 o251-03 slots=2
 o251-04 slots=2
-o251-05 slots=2
-o251-06 slots=2

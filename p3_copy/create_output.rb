@@ -1,19 +1,6 @@
 #!/usr/bin/ruby
 # This script runs the MPI program using different 
 # values of n and different numbers of processors
-require 'timeout'
-
-def write_to_cmd
-  begin
-    result = Timeout::timeout(1) do
-      sleep(1)
-    end
-    puts "The result was #{result}"
-    write_to_cmd
-  rescue Timeout::Error
-    puts "the calculation timed out"
-  end
-end
 class MPIScript
         def initialize(n, p, form)
                 @n = n
@@ -41,10 +28,10 @@ class MPIScript
         def run(file)
                 i = 0
                 while i < 5 do
-                        puts "..........Running"
+                        puts "Running"
                         run = run_cmd()
                         if run != nil then
-                                puts "..........Ran\n\n\n\n\n\n"
+                                puts "Ran"
                                 file.write("          {\n")
                                 run.each do |key, value|
                                         file.write("            " + key + " : " + value + "\n")
@@ -94,6 +81,7 @@ class MPIScript
                 result["time"] = cmd[2]
                 result["time"].gsub! 'Elapsed time = ', ''
                 result["time"].gsub! ' seconds', ''
+                result["time"].gsub! 'e+00', ''
             end
             return result
 
@@ -111,15 +99,14 @@ end
 
 
 f = File.open("output.txt", 'w')
-t1=Thread.new{write_to_cmd}
 p_values = [1,4,8,12,16,20] 
 ijk_values = ["ijk", "ikj","kij"] 
 timing_result = 0;
-    ijk_values.each { |form|
-        puts("\n\n******** form = #{form} ********=\n\n" )
-        timing_result_for_1p = 0;
-        p_values.each { |p| 
-            f.write("\n\n******** NUM PROCESSORS = #{p} ********=\n\n" ) 
+p_values.each { |p| 
+        f.write("\n\n******** NUM PROCESSORS = #{p} ********=\n\n" ) 
+        ijk_values.each { |form|
+            puts("\n\n******** form = #{form} ********=\n\n" )
+            timing_result_for_1p = 0;
             f.write("\n[\n")
             r = MPIScript.new(4800,p,form)
             r.run(f)
@@ -128,6 +115,6 @@ timing_result = 0;
             f.write("\n          **** p = #{p} , speedup = #{r.speedup} , efficiency = #{r.efficiency} ****\n")
             f.write("\n]\n")
         }
-    }
+}
 
 f.close()
