@@ -1,7 +1,7 @@
 #!/usr/bin/ruby
 #Simple program to parse through output.txt and print only the timing data with 
 #arrows around the minimum value
-file = File.new("output_kij.txt", "r")
+file = File.new("output_ikj.txt", "r")
 $i = 0;
 $arr = []
 while (line = file.gets)
