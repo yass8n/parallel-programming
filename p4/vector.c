@@ -7,5 +7,16 @@
 Vector * create_vector(int size){
 	Vector * vector = malloc(sizeof(vector));
 	vector->values = calloc(sizeof(double), size);
-
+	vector->size = size;
+	int i = 0;
+	for (i; i < vector->size; i++){
+	     vector->values[i] = drand48() * 2e6 - 1e6;
+	}
+	return vector;
+}
+void print_vector(Vector * vector){
+	int i = 0;
+	for (i; i < vector->size; i++){
+	     printf("%f ", vector->values[i]);
+	}
 }

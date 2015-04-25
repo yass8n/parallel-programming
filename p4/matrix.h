@@ -8,5 +8,6 @@ typedef struct Matrix {
 
 Matrix * create_matrix();
 void destroy_matrix(Matrix * matrix);
+void print_matrix(Matrix * matrix);
 
 #endif

@@ -8,5 +8,6 @@ typedef struct Vector {
 
 Vector * create_vector(int size);
 void destroy_vector(Vector * vector);
+void print_vector(Vector * vector);
 
 #endif
