@@ -140,7 +140,6 @@ void multiply_matricies(int *A, int *B, int *C, Details *details, int comm_sz){
   			    details: pointer to the filled input data that the user entered
  */
 void get_user_input(int **A, int **B, int**C, int **a, Details *details) {
-	printf("%s", "Enter data: ");
 	fscanf(stdin, "%s", details->matrix_form); //get form
     if (strncmp(details->matrix_form, "ijk", 3) != 0 && 
         strncmp(details->matrix_form, "ikj", 3) != 0 &&
@@ -251,12 +250,7 @@ int main(){
         double elapsed_time = end_time - start_time;
 		printf("\nrunning on %d processor(s)\n""Elapsed time = %.7e seconds\n",
 			 comm_sz,elapsed_time);
-		/*
-		FILE *fp;
-		fp=fopen("out.txt", "a");
-		fprintf(fp, "%d ... %.7e\n", comm_sz, elapsed_time);
-        fclose(fp);
-        */
+
         if (strncmp(details->flag, "I", 1) == 0 || strncmp(details->flag, "i", 1) == 0){
 		    print_matrix(final_matrix, details->n);
         }
