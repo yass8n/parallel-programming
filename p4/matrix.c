@@ -11,7 +11,8 @@ Matrix * create_matrix(int size){
 	for (i; i < matrix->size; i++){
 		matrix->values[i] = calloc(sizeof(double), matrix->size);
 		for (j = 0; j < matrix->size; j++){
-			matrix->values[i][j] = drand48() * 2e6 - 1e6;
+			// matrix->values[i][j] = drand48() * 2e6 - 1e6;
+			matrix->values[i][j] = rand() % 20;
 		}
 	}
 	return matrix;

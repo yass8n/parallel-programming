@@ -10,13 +10,14 @@ Vector * create_vector(int size){
 	vector->size = size;
 	int i = 0;
 	for (i; i < vector->size; i++){
-	     vector->values[i] = drand48() * 2e6 - 1e6;
+	     // vector->values[i] = drand48() * 2e6 - 1e6;
+	     vector->values[i] = rand() % 20;
 	}
 	return vector;
 }
 void print_vector(Vector * vector){
 	int i = 0;
 	for (i; i < vector->size; i++){
-	     printf("%f ", vector->values[i]);
+	     printf("%f\n ", vector->values[i]);
 	}
 }
