@@ -13,14 +13,14 @@ parallel_executable.o: parallel_executable.c
 		gcc -c -g -fopenmp parallel_executable.c
 
 matrix.o: matrix.c
-		gcc -c -g matrix.c
+		gcc -c -g -fopenmp matrix.c 
 
 vector.o: vector.c
-		gcc -c -g vector.c
+		gcc -c -g -fopenmp vector.c
 
 g_elimination.o:  g_elimination.c
-		gcc -c -g g_elimination.c
+		gcc -c -g -fopenmp g_elimination.c
 
 clean:
-		rm *.o ./execute
+		rm *.o ./execute ./parallel_execute
 

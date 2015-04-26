@@ -2,30 +2,29 @@
 #include <string.h>
 #include <stdlib.h>
 #include <time.h>
-#include "vector.h"
-#include "matrix.h"
 #include "g_elimination.h"
 #include <assert.h>
 #include <omp.h>
 
-int thread_count;
+int thread_count = 1;
+void set_thread_count(int num_threads){
+	thread_count = num_threads;
+}
 void forward_elimination(Matrix **matrix, Vector **vector, int row){
 	int static_column = row;
+	 //looping through each row of the matrix starting from the one below our target
 	#pragma omp parallel for num_threads(thread_count) shared(matrix, vector, static_column)\
 	 private(row) schedule(dynamic,1)
 	for (row = static_column + 1; row < (*matrix)->size; row++){
+	    // printf("%d  num threads\n", omp_get_num_threads() );
+	    // printf("%d  MACX threads\n", omp_get_max_threads() );
+	    // printf("%d  num \n", omp_get_thread_num() );
 		double multiplier = (*matrix)->values[row][static_column] / (*matrix)->values[static_column][static_column];
 	    int new_column = static_column;
-		double * temp_matrix_row = calloc(sizeof(double), (*matrix)->size);
 		for (new_column = new_column; new_column < (*matrix)->size; new_column++){
-				temp_matrix_row[new_column] = (*matrix)->values[static_column][new_column];
-				temp_matrix_row[new_column] *= multiplier;
-				(*matrix)->values[row][new_column] = (*matrix)->values[row][new_column] - temp_matrix_row[new_column];
+				(*matrix)->values[row][new_column] = (*matrix)->values[row][new_column] - ((*matrix)->values[static_column][new_column] * multiplier);
 		}
-		double temp_vect_value = (*vector)->values[static_column];
-		temp_vect_value *= multiplier;
-	    (*vector)->values[row] = (*vector)->values[row] - temp_vect_value;
-	    free(temp_matrix_row);
+	    (*vector)->values[row] = (*vector)->values[row] - (multiplier * (*vector)->values[static_column]);
 	}
 }
 double calculate_right_side(double *row, double right_side_value, double *x_values, int current_column, int size){
@@ -45,8 +44,7 @@ double * back_substitution(Matrix **matrix, Vector **vector){
 	double * x_values = calloc(sizeof(double), (*matrix)->size);
 	for (i = (*matrix)->size-1; i >= 0; i--){
 		x_values[i] = 1;
-		double new_x = calculate_right_side((*matrix)->values[i], (*vector)->values[i], x_values, i, (*matrix)->size-1);
-		x_values[i] = new_x;
+		x_values[i] = calculate_right_side((*matrix)->values[i], (*vector)->values[i], x_values, i, (*matrix)->size-1);
 	}
 	return x_values;
 }
@@ -63,7 +61,7 @@ double * execute_gaussian_elimination(Matrix ** matrix, Vector ** vector){
 		}
 		swap_matrix_row(&(*matrix), i, row);
 		swap_vector_row(&(*vector), i, row);
-		forward_elimination(&(*matrix), &(*vector), i);
+	    forward_elimination(&(*matrix), &(*vector), i);
 	}
 	return (back_substitution(&(*matrix), &(*vector)));
 }
