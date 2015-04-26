@@ -136,12 +136,12 @@ int main(int argc, char * argv[]){
 	// puts("after execute_gaussian_elimination matrix\n\n\n");
 	// print_vector(vector);
 	// puts("after execute_gaussian_elimination vector\n\n\n");
-	// print_vector(x_values);
-	// puts("after execute_gaussian_elimination x_values\n\n\n");
+	print_vector(x_values);
+	puts("after execute_gaussian_elimination x_values\n\n\n");
 	Vector * resulting_vector = multiply_matrix_by_x_vector(matrix_original, x_values, n);
 	resulting_vector = subtract_vectors(resulting_vector, vector_original);
-	print_vector(resulting_vector);
-	puts("after execute_gaussian_elimination resulting_vector\n\n\n");
+	// print_vector(resulting_vector);
+	// puts("after execute_gaussian_elimination resulting_vector\n\n\n");
 	double end_time = get_current_time();
 
 
