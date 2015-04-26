@@ -128,6 +128,6 @@ int main(int argc, char * argv[]){
 	resulting_vector = subtract_vectors(resulting_vector, vector_original);
 	print_vector(resulting_vector);
 	puts("that was  subtract vector\n\n\n");
-	printf("%f\n", l2_norm(resulting_vector));
+	printf("%.6le\n", l2_norm(resulting_vector));
 	return 0;
 }

@@ -13,7 +13,7 @@ Vector * create_vector(int size, int initialize){
     double x[3] = {106.800000 ,177.200000 ,279.200000};
 	if (initialize == 1){
 		for (i; i < vector->size; i++){
-		     // vector->values[i] = drand48() * 2e6 - 1e6;
+		     vector->values[i] = drand48() * 2e6 - 1e6;
 		     vector->values[i] = x[i];
 		}
 	}
