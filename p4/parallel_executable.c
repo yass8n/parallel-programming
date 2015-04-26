@@ -13,7 +13,7 @@ void forward_elimination(Matrix **matrix, Vector **vector, int row){
 	#pragma omp parallel for num_threads(thread_count) shared(matrix, vector, static_column)\
 	 private(row) schedule(dynamic,1)
 	for (row = static_column + 1; row < (*matrix)->size; row++){
-		printf("%d my thread number \n ", omp_get_thread_num());
+		// printf("%d my thread number \n ", omp_get_thread_num());
 		double multiplier = (*matrix)->values[row][static_column] / (*matrix)->values[static_column][static_column];
 	    int new_column = static_column;
 		double * temp_matrix_row = calloc(sizeof(double), (*matrix)->size);
@@ -25,6 +25,7 @@ void forward_elimination(Matrix **matrix, Vector **vector, int row){
 		double temp_vect_value = (*vector)->values[static_column];
 		temp_vect_value *= multiplier;
 	    (*vector)->values[row] = (*vector)->values[row] - temp_vect_value;
+	    free(temp_matrix_row);
 	}
 }
 double calculate_right_side(double *row, double right_side_value, double *x_values, int current_column, int size){
@@ -42,8 +43,6 @@ double calculate_right_side(double *row, double right_side_value, double *x_valu
 double * back_substitution(Matrix **matrix, Vector **vector){
 	int i = (*matrix)->size-1;
 	double * x_values = calloc(sizeof(double), (*matrix)->size);
-	#pragma omp parallel for num_threads(thread_count) shared(matrix, vector, x_values)\
-	private(i) schedule(dynamic, 1)
 	for (i = (*matrix)->size-1; i >= 0; i--){
 		x_values[i] = 1;
 		double new_x = calculate_right_side((*matrix)->values[i], (*vector)->values[i], x_values, i, (*matrix)->size-1);
@@ -104,7 +103,6 @@ Vector * multiply_matrix_by_x_vector(Matrix * matrix, Vector * x_values, int n){
 		assert(matrix->size == x_values->size);
 		result->values[i] = cross_product(matrix->values[i], x_values->values, n);
 	}
-	#pragma omp barrier
 	return result;
 }
 double get_current_time()
@@ -134,14 +132,16 @@ int main(int argc, char * argv[]){
 	// print_vector(x_values);
 	// puts("original x_vals\n\n\n");
 	x_values->values = execute_gaussian_elimination(&matrix, &vector);
-		// print_matrix(matrix);
+	// print_matrix(matrix);
 	// puts("after execute_gaussian_elimination matrix\n\n\n");
 	// print_vector(vector);
-	puts("after execute_gaussian_elimination vector\n\n\n");
-	print_vector(x_values);
-	puts("after execute_gaussian_elimination x_values\n\n\n");
+	// puts("after execute_gaussian_elimination vector\n\n\n");
+	// print_vector(x_values);
+	// puts("after execute_gaussian_elimination x_values\n\n\n");
 	Vector * resulting_vector = multiply_matrix_by_x_vector(matrix_original, x_values, n);
 	resulting_vector = subtract_vectors(resulting_vector, vector_original);
+	print_vector(resulting_vector);
+	puts("after execute_gaussian_elimination resulting_vector\n\n\n");
 	double end_time = get_current_time();
 
 

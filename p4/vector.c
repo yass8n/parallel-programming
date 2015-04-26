@@ -53,8 +53,8 @@ double l2_norm(Vector * vect)
 }
 Vector * subtract_vectors(Vector * resulting_vect, Vector * original_vect){
 	int i;
-	#pragma omp parallel for num_threads(thread_count) shared(resulting_vect, original_vect)\
-	private(i) reduction(-:resulting_vect->values) 
+	// #pragma omp parallel for num_threads(thread_count) shared(resulting_vect, original_vect)\
+	// private(i) reduction(-:resulting_vect->values) 
 	for (i=0; i < resulting_vect->size; i++){
 		resulting_vect->values[i] -= original_vect->values[i];
 	}
