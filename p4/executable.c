@@ -4,7 +4,8 @@
 #include <time.h>
 #include "vector.h"
 #include "matrix.h"
-#include <complex.h>
+#include <assert.h>
+
 void forward_elimination(Matrix **matrix, Vector **vector, int row){
 	int static_column = row;
 	for (++row; row < (*matrix)->size; row++){
@@ -23,15 +24,11 @@ void forward_elimination(Matrix **matrix, Vector **vector, int row){
 }
 double calculate_right_side(double *row, double right_side_value, double *x_values, int current_column, int size){
 	int i = size;
-    printf("%f before right side value..\n", right_side_value);
 	for (i; i >= 0; i--){
 		if (current_column != i){
-           printf("%f row[i].. %f x_values[i]\n", row[i], x_values[i]);
 			right_side_value -= (row[i] * x_values[i]);
 		}
 	}
-	printf("%f before...%f current_vale\n", right_side_value,row[current_column]);
-	printf("%f after..\n", (right_side_value / row[current_column]));
 	return (right_side_value / row[current_column]);
 
 }
@@ -79,25 +76,51 @@ void get_input_from_user(int argc, char * argv[], int * n, int * thread_count){
 	(*n) = atoi(argv[1]);
     (*thread_count) = atoi(argv[2]);
 }
+double cross_product(double * matrix_row_values, double * x_values, int size){
+	double result = 0;
+	int i =0;
+	for (i; i < size; i++){
+	    printf("%f matrix_row_values[i] ... %f x_values[i]\n", matrix_row_values[i], x_values[i]);
+		result += (matrix_row_values[i] * x_values[i]);
+	}
+	printf("%f .. \n", result);
+	return result;
+}
+Vector * multiply_matrix_by_x_vector(Matrix * matrix, Vector * x_values, int n){
+	Vector * result = create_vector(x_values->size, 0);
+	int i = 0;
+	for (i; i < x_values->size; i++){
+		assert(matrix->size == x_values->size);
+		result->values[i] = cross_product(matrix->values[i], x_values->values, n);
+	}
+	return result;
+}
 int main(int argc, char * argv[]){
 	int n, thread_count;
 	get_input_from_user(argc, argv, &n, &thread_count);
 	srand48(time(NULL));
-	Vector * vector = create_vector(n);
-	Matrix * matrix = create_matrix(n);
-	// Matrix * matrix_original = copy_matrix(matrix);
-	// Vector * vector_original = copy_vector(vector);
+	Vector * vector = create_vector(n, 1);
+	Matrix * matrix = create_matrix(n, 1);
+	Vector * vector_original = copy_vector(vector);
+	Matrix * matrix_original = copy_matrix(matrix);
+	Vector * x_values = create_vector(n, 0);
+	// print_matrix(matrix);
+	// puts("\n\n\n");
+	// print_vector(vector);
+	// puts("BEFORE\n\n\n");
+	x_values->values = execute_gaussian_elimination(&matrix, &vector);
 	print_matrix(matrix);
 	puts("\n\n\n");
 	print_vector(vector);
-	puts("BEFORE\n\n\n");
-	double * x_values = execute_gaussian_elimination(&matrix, &vector);
-	Vector * vector_values = create_vector(n);
-	vector_values->values = x_values;
-	print_matrix(matrix);
 	puts("\n\n\n");
-	print_vector(vector);
+	print_vector(x_values);
 	puts("\n\n\n");
-	print_vector(vector_values);
+	Vector * resulting_vector = multiply_matrix_by_x_vector(matrix_original, x_values, n);
+	print_vector(resulting_vector);
+	puts("that was multiply vector\n\n\n");
+	resulting_vector = subtract_vectors(resulting_vector, vector_original);
+	print_vector(resulting_vector);
+	puts("that was  subtract vector\n\n\n");
+	printf("%f\n", l2_norm(resulting_vector));
 	return 0;
 }
