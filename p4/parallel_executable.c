@@ -30,36 +30,41 @@ int thread_count;
 // }
 void forward_elimination(Matrix **matrix, Vector **vector, int row){
 	int static_column = row;
-	int new_column;
-	double temp_vect_value;
-	double multiplier;
-	double * temp_matrix_row;
-	printf("%d row before\n", row);
+	// int new_column;
+	// double temp_vect_value;
+	// double multiplier;
+	// double * temp_matrix_row;
+	// printf("%d row before\n", row);
 
 	// #  pragma omp parallel for num_threads(thread_count)\
 	// shared(matrix, vector, temp_vect_value, static_column, multiplier, temp_matrix_row)\
 	// private(row, new_column) schedule(dynamic, 1)
-	#pragma omp parallel for num_threads(thread_count) shared(matrix, vector, temp_vect_value, static_column, multiplier, temp_matrix_row)\
-	 private(row, new_column) schedule(dynamic,1)
+	#pragma omp parallel for num_threads(thread_count) shared(matrix, vector, static_column)\
+	 private(row) schedule(dynamic,1)
     // {
 		for (row = static_column + 1; row < (*matrix)->size; row++){
-		printf("%d row\n", row);
-			multiplier = (*matrix)->values[row][static_column] / (*matrix)->values[static_column][static_column];
-			printf("%f multiplier\n", multiplier);
-		    new_column = static_column;
-			temp_matrix_row = calloc(sizeof(double), (*matrix)->size);
+			 printf("%d my thread number \n ", omp_get_thread_num());
+		// printf("%d row\n", row);
+			double multiplier = (*matrix)->values[row][static_column] / (*matrix)->values[static_column][static_column];
+			// printf("%f multiplier\n", multiplier);
+		    int new_column = static_column;
+			double * temp_matrix_row = calloc(sizeof(double), (*matrix)->size);
 			// #  pragma omp parallel for num_threads(thread_count)\
 			// shared(matrix, vector, temp_vect_value, static_column, multiplier, temp_matrix_row)\
 			// private(new_column) schedule(dynamic, 1)
-			for (new_column = new_column; new_column < (*matrix)->size; new_column++){
-				temp_matrix_row[new_column] = (*matrix)->values[static_column][new_column];
-				temp_matrix_row[new_column] *= multiplier;
-				(*matrix)->values[row][new_column] = (*matrix)->values[row][new_column] - temp_matrix_row[new_column];
+
+			// #pragma omp critical
+			// {
+				for (new_column = new_column; new_column < (*matrix)->size; new_column++){
+						temp_matrix_row[new_column] = (*matrix)->values[static_column][new_column];
+						temp_matrix_row[new_column] *= multiplier;
+						(*matrix)->values[row][new_column] = (*matrix)->values[row][new_column] - temp_matrix_row[new_column];
+				}
+				double temp_vect_value = (*vector)->values[static_column];
+				temp_vect_value *= multiplier;
+			    (*vector)->values[row] = (*vector)->values[row] - temp_vect_value;
 			}
-			temp_vect_value = (*vector)->values[static_column];
-			temp_vect_value *= multiplier;
-		    (*vector)->values[row] = (*vector)->values[row] - temp_vect_value;
-		}
+		// }
 	// }
 }
 double calculate_right_side(double *row, double right_side_value, double *x_values, int current_column, int size){
@@ -91,8 +96,7 @@ double * back_substitution(Matrix **matrix, Vector **vector){
               thread_count: number of threads to use
  */
 	double * execute_gaussian_elimination(Matrix ** matrix, Vector ** vector){
-		int i = 0, j = 0, k = 0; 
-
+		int i = 0, j = 0; 
 		for (i=0; i < (*matrix)->size; i ++){
 			double largest = cabs((*matrix)->values[i][i]);
 			int row = i;
@@ -154,14 +158,14 @@ int main(int argc, char * argv[]){
 
 
 	double start_time = get_current_time();
-		print_matrix(matrix);
+		// print_matrix(matrix);
 	// puts("original matrix\n\n\n");
 	// print_vector(vector);
 	// puts("original vect\n\n\n");
 	// print_vector(x_values);
 	// puts("original x_vals\n\n\n");
 	x_values->values = execute_gaussian_elimination(&matrix, &vector);
-		print_matrix(matrix);
+		// print_matrix(matrix);
 	// puts("after execute_gaussian_elimination matrix\n\n\n");
 	// print_vector(vector);
 	puts("after execute_gaussian_elimination vector\n\n\n");

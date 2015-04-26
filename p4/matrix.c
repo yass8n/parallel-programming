@@ -14,7 +14,7 @@ Matrix * create_matrix(int size, int initialize){
 		if (initialize == 1){
 			for (j = 0; j < matrix->size; j++){
 				matrix->values[i][j] = drand48() * 2e6 - 1e6;
-				matrix->values[i][j] = x[(i * 3) + j];
+				// matrix->values[i][j] = x[(i * 3) + j];
 			}
 		}
 	}

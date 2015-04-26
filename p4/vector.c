@@ -14,7 +14,7 @@ Vector * create_vector(int size, int initialize){
 	if (initialize == 1){
 		for (i; i < vector->size; i++){
 		     vector->values[i] = drand48() * 2e6 - 1e6;
-		     vector->values[i] = x[i];
+		     // vector->values[i] = x[i];
 		}
 	}
 	return vector;
