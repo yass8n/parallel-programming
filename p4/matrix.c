@@ -8,13 +8,11 @@ Matrix * create_matrix(int size, int initialize){
 	matrix->size = size;
 	int i = 0, j = 0;
 	matrix->values = malloc(sizeof(double *) * matrix->size);
-    double x[9] = {25.000000 ,5.000000 ,1.000000 ,64.000000 ,8.000000 ,1.000000 ,144.000000, 12.000000 ,1.000000 };
 	for (i; i < matrix->size; i++){
 		matrix->values[i] = calloc(sizeof(double), matrix->size);
 		if (initialize == 1){
 			for (j = 0; j < matrix->size; j++){
 				matrix->values[i][j] = drand48() * 2e6 - 1e6;
-				// matrix->values[i][j] = x[(i * 3) + j];
 			}
 		}
 	}
