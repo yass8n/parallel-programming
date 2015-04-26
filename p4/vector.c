@@ -21,3 +21,8 @@ void print_vector(Vector * vector){
 	     printf("%f\n ", vector->values[i]);
 	}
 }
+void swap_vector_row(Vector **vector, int initial_row, int swap_row){
+    double initial_value = (*vector)->values[initial_row];
+	(*vector)->values[initial_row] = (*vector)->values[swap_row];
+	(*vector)->values[swap_row] = initial_value;
+}

@@ -5,16 +5,6 @@
 #include "vector.h"
 #include "matrix.h"
 #include <complex.h>
-void swap_matrix_row(Matrix **matrix, int initial_row, int swap_row){
-	double * initial_row_pointer = (*matrix)->values[initial_row];
-	(*matrix)->values[initial_row] = (*matrix)->values[swap_row];
-	(*matrix)->values[swap_row] = initial_row_pointer;
-}
-void swap_vector_row(Vector **vector, int initial_row, int swap_row){
-    double initial_value = (*vector)->values[initial_row];
-	(*vector)->values[initial_row] = (*vector)->values[swap_row];
-	(*vector)->values[swap_row] = initial_value;
-}
 void forward_elimination(Matrix **matrix, Vector **vector, int row){
 	int static_column = row;
 	for (++row; row < (*matrix)->size; row++){
@@ -31,6 +21,30 @@ void forward_elimination(Matrix **matrix, Vector **vector, int row){
 		(*vector)->values[static_column+1] = (*vector)->values[static_column+1] - temp_vect_value;
 	}
 }
+double calculate_right_side(double *row, double right_side_value, double *x_values, int current_column, int size){
+	int i = size;
+    printf("%f before right side value..\n", right_side_value);
+	for (i; i >= 0; i--){
+		if (current_column != i){
+           printf("%f row[i].. %f x_values[i]\n", row[i], x_values[i]);
+			right_side_value -= (row[i] * x_values[i]);
+		}
+	}
+	printf("%f before...%f current_vale\n", right_side_value,row[current_column]);
+	printf("%f after..\n", (right_side_value / row[current_column]));
+	return (right_side_value / row[current_column]);
+
+}
+double * back_substitution(Matrix **matrix, Vector **vector){
+	int i = (*matrix)->size-1;
+	double * x_values = calloc(sizeof(double), (*matrix)->size);
+	for (i; i >= 0; i--){
+		x_values[i] = 1;
+		double new_x = calculate_right_side((*matrix)->values[i], (*vector)->values[i], x_values, i, (*matrix)->size-1);
+		x_values[i] = new_x;
+	}
+	return x_values;
+}
 /*
  * Function:  get_input_from_user
  * Purpose:   Reads in the users input and summarizes how to run program
@@ -39,7 +53,7 @@ void forward_elimination(Matrix **matrix, Vector **vector, int row){
  * Out args:  n: number of rows and columns
               thread_count: number of threads to use
  */
-void execute_gaussian_elimination(Matrix ** matrix, Vector ** vector){
+double * execute_gaussian_elimination(Matrix ** matrix, Vector ** vector){
 	int i = 0, j = 0, k = 0; 
 	for (i,k; i < (*matrix)->size; i ++, k++){
 		double largest = cabs((*matrix)->values[i][k]);
@@ -54,6 +68,7 @@ void execute_gaussian_elimination(Matrix ** matrix, Vector ** vector){
 		swap_vector_row(&(*vector), i, row);
 		forward_elimination(&(*matrix), &(*vector), i);
 	}
+	return (back_substitution(&(*matrix), &(*vector)));
 }
 
 void get_input_from_user(int argc, char * argv[], int * n, int * thread_count){
@@ -70,13 +85,19 @@ int main(int argc, char * argv[]){
 	srand48(time(NULL));
 	Vector * vector = create_vector(n);
 	Matrix * matrix = create_matrix(n);
+	// Matrix * matrix_original = copy_matrix(matrix);
+	// Vector * vector_original = copy_vector(vector);
 	print_matrix(matrix);
 	puts("\n\n\n");
 	print_vector(vector);
 	puts("BEFORE\n\n\n");
-	execute_gaussian_elimination(&matrix, &vector);
+	double * x_values = execute_gaussian_elimination(&matrix, &vector);
+	Vector * vector_values = create_vector(n);
+	vector_values->values = x_values;
 	print_matrix(matrix);
 	puts("\n\n\n");
 	print_vector(vector);
+	puts("\n\n\n");
+	print_vector(vector_values);
 	return 0;
 }

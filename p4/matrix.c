@@ -26,3 +26,8 @@ void print_matrix(Matrix * matrix){
 		puts("\n");
 	}
 }
+void swap_matrix_row(Matrix **matrix, int initial_row, int swap_row){
+	double * initial_row_pointer = (*matrix)->values[initial_row];
+	(*matrix)->values[initial_row] = (*matrix)->values[swap_row];
+	(*matrix)->values[swap_row] = initial_row_pointer;
+}
