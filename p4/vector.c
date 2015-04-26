@@ -10,10 +10,11 @@ Vector * create_vector(int size, int initialize){
 	vector->values = calloc(sizeof(double), size);
 	vector->size = size;
 	int i = 0;
+    double x[3] = {106.800000 ,177.200000 ,279.200000};
 	if (initialize == 1){
 		for (i; i < vector->size; i++){
 		     // vector->values[i] = drand48() * 2e6 - 1e6;
-		     vector->values[i] = rand() % 20;
+		     vector->values[i] = x[i];
 		}
 	}
 	return vector;

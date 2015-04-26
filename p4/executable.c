@@ -11,15 +11,15 @@ void forward_elimination(Matrix **matrix, Vector **vector, int row){
 	for (++row; row < (*matrix)->size; row++){
 		double multiplier = (*matrix)->values[row][static_column] / (*matrix)->values[static_column][static_column];
 		int new_column = static_column;
-		double * temp_row = calloc(sizeof(double), (*matrix)->size);
+		double * temp_matrix_row = calloc(sizeof(double), (*matrix)->size);
 		for (new_column; new_column < (*matrix)->size; new_column++){
-			temp_row[new_column] = (*matrix)->values[static_column][new_column];
-			temp_row[new_column] *= multiplier;
-			(*matrix)->values[row][new_column] = (*matrix)->values[row][new_column] - temp_row[new_column];
+			temp_matrix_row[new_column] = (*matrix)->values[static_column][new_column];
+			temp_matrix_row[new_column] *= multiplier;
+			(*matrix)->values[row][new_column] = (*matrix)->values[row][new_column] - temp_matrix_row[new_column];
 		}
 		double temp_vect_value = (*vector)->values[static_column];
 		temp_vect_value *= multiplier;
-		(*vector)->values[static_column+1] = (*vector)->values[static_column+1] - temp_vect_value;
+	    (*vector)->values[row] = (*vector)->values[row] - temp_vect_value;
 	}
 }
 double calculate_right_side(double *row, double right_side_value, double *x_values, int current_column, int size){
@@ -108,13 +108,20 @@ int main(int argc, char * argv[]){
 	// puts("\n\n\n");
 	// print_vector(vector);
 	// puts("BEFORE\n\n\n");
+	print_matrix(matrix);
+	puts("original matrix\n\n\n");
+	print_vector(vector);
+	puts("original vect\n\n\n");
+	print_vector(x_values);
+	puts("original x_vals\n\n\n");
 	x_values->values = execute_gaussian_elimination(&matrix, &vector);
 	print_matrix(matrix);
-	puts("\n\n\n");
+	puts("after execute_gaussian_elimination matrix\n\n\n");
 	print_vector(vector);
-	puts("\n\n\n");
+	puts("after execute_gaussian_elimination vector\n\n\n");
 	print_vector(x_values);
-	puts("\n\n\n");
+	puts("after execute_gaussian_elimination x_values\n\n\n");
+
 	Vector * resulting_vector = multiply_matrix_by_x_vector(matrix_original, x_values, n);
 	print_vector(resulting_vector);
 	puts("that was multiply vector\n\n\n");
