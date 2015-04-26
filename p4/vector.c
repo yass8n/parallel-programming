@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <math.h>
+#include <omp.h>
 
 
 Vector * create_vector(int size, int initialize){
@@ -51,9 +52,11 @@ double l2_norm(Vector * vect)
     return cabs(sqrt(result));
 }
 Vector * subtract_vectors(Vector * resulting_vect, Vector * original_vect){
-	int i = 0;
-	for (i; i < resulting_vect->size; i++){
-		resulting_vect->values[i] = (resulting_vect->values[i] - original_vect->values[i]);
+	int i;
+	#pragma omp parallel for num_threads(thread_count) shared(resulting_vect, original_vect)\
+	private(i) reduction(-:resulting_vect->values) 
+	for (i=0; i < resulting_vect->size; i++){
+		resulting_vect->values[i] -= original_vect->values[i];
 	}
 	return resulting_vect;
 }

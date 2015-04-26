@@ -8,68 +8,30 @@
 #include <omp.h>
 
 int thread_count;
-// void forward_elimination(Matrix **matrix, Vector **vector, int row){
-// 	int static_column = row;
-// 	row = row + 1;
-// 	int new_column;
-// 	// #  pragma omp parallel for num_threads(thread_count) \
-//  //      shared(matrix, vector) private(row, static_column, new_column) schedule(dynamic, 1)
-// 	for (row = row; row < (*matrix)->size; row++){
-// 		double multiplier = (*matrix)->values[row][static_column] / (*matrix)->values[static_column][static_column];
-// 	    new_column = static_column;
-// 		double * temp_matrix_row = calloc(sizeof(double), (*matrix)->size);
-// 		for (new_column = new_column; new_column < (*matrix)->size; new_column++){
-// 			temp_matrix_row[new_column] = (*matrix)->values[static_column][new_column];
-// 			temp_matrix_row[new_column] *= multiplier;
-// 			(*matrix)->values[row][new_column] = (*matrix)->values[row][new_column] - temp_matrix_row[new_column];
-// 		}
-// 		double temp_vect_value = (*vector)->values[static_column];
-// 		temp_vect_value *= multiplier;
-// 	    (*vector)->values[row] = (*vector)->values[row] - temp_vect_value;
-// 	}
-// }
 void forward_elimination(Matrix **matrix, Vector **vector, int row){
 	int static_column = row;
-	// int new_column;
-	// double temp_vect_value;
-	// double multiplier;
-	// double * temp_matrix_row;
-	// printf("%d row before\n", row);
-
-	// #  pragma omp parallel for num_threads(thread_count)\
-	// shared(matrix, vector, temp_vect_value, static_column, multiplier, temp_matrix_row)\
-	// private(row, new_column) schedule(dynamic, 1)
 	#pragma omp parallel for num_threads(thread_count) shared(matrix, vector, static_column)\
 	 private(row) schedule(dynamic,1)
-    // {
-		for (row = static_column + 1; row < (*matrix)->size; row++){
-			 printf("%d my thread number \n ", omp_get_thread_num());
-		// printf("%d row\n", row);
-			double multiplier = (*matrix)->values[row][static_column] / (*matrix)->values[static_column][static_column];
-			// printf("%f multiplier\n", multiplier);
-		    int new_column = static_column;
-			double * temp_matrix_row = calloc(sizeof(double), (*matrix)->size);
-			// #  pragma omp parallel for num_threads(thread_count)\
-			// shared(matrix, vector, temp_vect_value, static_column, multiplier, temp_matrix_row)\
-			// private(new_column) schedule(dynamic, 1)
-
-			// #pragma omp critical
-			// {
-				for (new_column = new_column; new_column < (*matrix)->size; new_column++){
-						temp_matrix_row[new_column] = (*matrix)->values[static_column][new_column];
-						temp_matrix_row[new_column] *= multiplier;
-						(*matrix)->values[row][new_column] = (*matrix)->values[row][new_column] - temp_matrix_row[new_column];
-				}
-				double temp_vect_value = (*vector)->values[static_column];
-				temp_vect_value *= multiplier;
-			    (*vector)->values[row] = (*vector)->values[row] - temp_vect_value;
-			}
-		// }
-	// }
+	for (row = static_column + 1; row < (*matrix)->size; row++){
+		printf("%d my thread number \n ", omp_get_thread_num());
+		double multiplier = (*matrix)->values[row][static_column] / (*matrix)->values[static_column][static_column];
+	    int new_column = static_column;
+		double * temp_matrix_row = calloc(sizeof(double), (*matrix)->size);
+		for (new_column = new_column; new_column < (*matrix)->size; new_column++){
+				temp_matrix_row[new_column] = (*matrix)->values[static_column][new_column];
+				temp_matrix_row[new_column] *= multiplier;
+				(*matrix)->values[row][new_column] = (*matrix)->values[row][new_column] - temp_matrix_row[new_column];
+		}
+		double temp_vect_value = (*vector)->values[static_column];
+		temp_vect_value *= multiplier;
+	    (*vector)->values[row] = (*vector)->values[row] - temp_vect_value;
+	}
 }
 double calculate_right_side(double *row, double right_side_value, double *x_values, int current_column, int size){
 	int i = size;
-	for (i; i >= 0; i--){
+	#pragma omp parallel for num_threads(thread_count) shared(row, x_values, current_column, size)\
+	private(i) reduction(-:right_side_value) 
+	for (i = size; i >= 0; i--){
 		if (current_column != i){
 			right_side_value -= (row[i] * x_values[i]);
 		}
@@ -80,7 +42,9 @@ double calculate_right_side(double *row, double right_side_value, double *x_valu
 double * back_substitution(Matrix **matrix, Vector **vector){
 	int i = (*matrix)->size-1;
 	double * x_values = calloc(sizeof(double), (*matrix)->size);
-	for (i; i >= 0; i--){
+	#pragma omp parallel for num_threads(thread_count) shared(matrix, vector, x_values)\
+	private(i) schedule(dynamic, 1)
+	for (i = (*matrix)->size-1; i >= 0; i--){
 		x_values[i] = 1;
 		double new_x = calculate_right_side((*matrix)->values[i], (*vector)->values[i], x_values, i, (*matrix)->size-1);
 		x_values[i] = new_x;
@@ -123,19 +87,24 @@ void get_input_from_user(int argc, char * argv[], int * n, int * thread_count){
 }
 double cross_product(double * matrix_row_values, double * x_values, int size){
 	double result = 0;
-	int i =0;
-	for (i; i < size; i++){
+	int i;
+	#pragma omp parallel for num_threads(thread_count) shared(matrix_row_values, x_values)\
+	private(i) reduction(+:result) 
+	for (i = 0; i < size; i++){
 		result += (matrix_row_values[i] * x_values[i]);
 	}
 	return result;
 }
 Vector * multiply_matrix_by_x_vector(Matrix * matrix, Vector * x_values, int n){
 	Vector * result = create_vector(x_values->size, 0);
-	int i = 0;
-	for (i; i < x_values->size; i++){
+	int i;
+	#pragma omp parallel for num_threads(thread_count) shared(matrix, x_values, result)\
+	 private(i) schedule(dynamic,1)
+	for (i = 0; i < x_values->size; i++){
 		assert(matrix->size == x_values->size);
 		result->values[i] = cross_product(matrix->values[i], x_values->values, n);
 	}
+	#pragma omp barrier
 	return result;
 }
 double get_current_time()
