@@ -14,7 +14,7 @@ void forward_elimination(Matrix **matrix, Vector **vector, int row){
 	int static_column = row;
 	 //looping through each row of the matrix starting from the one below our target
 	#pragma omp parallel for num_threads(thread_count) shared(matrix, vector, static_column)\
-	 private(row) schedule(dynamic,1)
+	 private(row) schedule(static,40)
 	for (row = static_column + 1; row < (*matrix)->size; row++){
 	    // printf("%d  num threads\n", omp_get_num_threads() );
 	    // printf("%d  MACX threads\n", omp_get_max_threads() );
@@ -30,8 +30,8 @@ void forward_elimination(Matrix **matrix, Vector **vector, int row){
 double calculate_right_side(double *row, double right_side_value, double *x_values, int current_column, int size){
 	int i = size;
 	#pragma omp parallel for num_threads(thread_count) shared(row, x_values, current_column, size)\
-	private(i) reduction(-:right_side_value) 
-	for (i = size; i >= 0; i--){
+	private(i) schedule(static,40) reduction(-:right_side_value) 
+	for (i = size; i >= current_column; i--){
 		if (current_column != i){
 			right_side_value -= (row[i] * x_values[i]);
 		}
@@ -69,7 +69,7 @@ double cross_product(double * matrix_row_values, double * x_values, int size){
 	double result = 0;
 	int i;
 	#pragma omp parallel for num_threads(thread_count) shared(matrix_row_values, x_values)\
-	private(i) reduction(+:result) 
+	private(i) schedule(static,40) reduction(+:result) 
 	for (i = 0; i < size; i++){
 		result += (matrix_row_values[i] * x_values[i]);
 	}
@@ -79,7 +79,7 @@ Vector * multiply_matrix_by_x_vector(Matrix * matrix, Vector * x_values, int n){
 	Vector * result = create_vector(x_values->size, 0);
 	int i;
 	#pragma omp parallel for num_threads(thread_count) shared(matrix, x_values, result)\
-	 private(i) schedule(dynamic,1)
+	 private(i) schedule(static,40)
 	for (i = 0; i < x_values->size; i++){
 		assert(matrix->size == x_values->size);
 		result->values[i] = cross_product(matrix->values[i], x_values->values, n);

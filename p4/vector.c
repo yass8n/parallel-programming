@@ -5,7 +5,6 @@
 #include <stdio.h>
 #include <math.h>
 #include <omp.h>
-#include <omp.h>
 
 int thread_count;
 Vector * create_vector(int size, int initialize){
@@ -54,7 +53,7 @@ double l2_norm(Vector * vect)
 Vector * subtract_vectors(Vector * resulting_vect, Vector * original_vect){
 	int i;
 	#pragma omp parallel for num_threads(thread_count) shared(original_vect, resulting_vect)\
-	private(i) schedule(dynamic,1)
+	private(i) schedule(static,40)
 	for (i=0; i < resulting_vect->size; i++){
 		resulting_vect->values[i] -= original_vect->values[i];
 	}

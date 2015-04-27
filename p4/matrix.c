@@ -8,7 +8,7 @@ Matrix * create_matrix(int size, int initialize){
 	matrix->size = size;
 	int i = 0, j = 0;
 	matrix->values = malloc(sizeof(double *) * matrix->size);
-	for (i; i < matrix->size; i++){
+	for (i = 0; i < matrix->size; i++){
 		matrix->values[i] = calloc(sizeof(double), matrix->size);
 		if (initialize == 1){
 			for (j = 0; j < matrix->size; j++){
@@ -20,7 +20,7 @@ Matrix * create_matrix(int size, int initialize){
 }
 void print_matrix(Matrix * matrix){
 	int i = 0, j = 0;
-	for (i; i < matrix->size; i++){
+	for (i = 0; i < matrix->size; i++){
 		for (j = 0; j < matrix->size; j++){
 			printf("%f ", matrix->values[i][j]);
 		}
@@ -37,8 +37,8 @@ Matrix * copy_matrix(Matrix * m){
     
     matrix->size = m->size;
     matrix->values = malloc(sizeof(double *) * matrix->size);
-    int i=0;
-    for (i; i < matrix->size; i++)
+    int i = 0;
+    for (i = 0; i < matrix->size; i++)
     {
         matrix->values[i] = malloc(sizeof(double) * matrix->size);
         memcpy(matrix->values[i], m->values[i], sizeof(double) * m->size); 
