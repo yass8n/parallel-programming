@@ -23,20 +23,20 @@ static void get_input_from_user(int argc, char * argv[], int * n){
 		exit(0);
 	}
 	(*n) = atoi(argv[1]);
-    set_thread_count(atoi(argv[2])); //thread_count this is a defined in g_elimination.h
+    set_thread_count(atoi(argv[2]), (*n)); //thread_count this is a defined in g_elimination.h
     omp_set_num_threads(thread_count);
-}
-static double get_current_time()
-{
-    struct timeval t; 
-    gettimeofday(&t, NULL);
-    return t.tv_sec + (t.tv_usec / (double) 1000000.0);
 }
 int main(int argc, char * argv[]){
 	int n;
 	get_input_from_user(argc, argv, &n);
 	// srand48(time(NULL));
-
+	#pragma omp parallel 
+	{
+	if(omp_get_thread_num() == 0){
+		printf("%d = number of processors\n", omp_get_num_procs( ));
+		printf("%d = number of threads\n", omp_get_num_threads( ));
+	    }
+	}
 	Vector * vector = create_vector(n, 1);
 	Matrix * matrix = create_matrix(n, 1);
 	Vector * vector_original = copy_vector(vector);
@@ -44,16 +44,15 @@ int main(int argc, char * argv[]){
 	Vector * x_values = create_vector(n, 0);
 
 
-	double start_time = get_current_time();
+	double start_time = omp_get_wtime();
 	x_values->values = execute_gaussian_elimination(&matrix, &vector);
-	print_vector(x_values);
 	Vector * resulting_vector = multiply_matrix_by_x_vector(matrix_original, x_values, n);
 	resulting_vector = subtract_vectors(resulting_vector, vector_original);
-	double end_time = get_current_time();
+	double end_time = omp_get_wtime();
 	print_vector(resulting_vector);
 
 
 	printf("%.7le\n", l2_norm(resulting_vector));
-	printf("Completed in %.10lfsec\n", end_time - start_time);
+	printf("Completed in %.10lfsec\n\n", end_time - start_time);
 	return 0;
 }
