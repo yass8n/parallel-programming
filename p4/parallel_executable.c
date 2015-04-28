@@ -49,10 +49,8 @@ int main(int argc, char * argv[]){
 	Vector * resulting_vector = multiply_matrix_by_x_vector(matrix_original, x_values, n);
 	resulting_vector = subtract_vectors(resulting_vector, vector_original);
 	double end_time = omp_get_wtime();
-	print_vector(resulting_vector);
 
-
-	printf("%.7le\n", l2_norm(resulting_vector));
+	printf("l2norm = %.7le\n", l2_norm(resulting_vector));
 	printf("Completed in %.10lfsec\n\n", end_time - start_time);
 	return 0;
 }
