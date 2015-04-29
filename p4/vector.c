@@ -1,21 +1,20 @@
 #include "vector.h"
-#include "g_elimination.h"
 #include <string.h>
 #include <stdlib.h>
 #include <stdio.h>
 #include <math.h>
-#include <omp.h>
 
-int thread_count;
-int chunk_size;
+
 Vector * create_vector(int size, int initialize){
 	Vector * vector = malloc(sizeof(vector));
 	vector->values = calloc(sizeof(double), size);
 	vector->size = size;
 	int i = 0;
+    double x[3] = {106.800000 ,177.200000 ,279.200000};
 	if (initialize == 1){
 		for (i; i < vector->size; i++){
-		     vector->values[i] = drand48() * 2e6 - 1e6;
+		     // vector->values[i] = drand48() * 2e6 - 1e6;
+		     vector->values[i] = x[i];
 		}
 	}
 	return vector;
@@ -52,11 +51,9 @@ double l2_norm(Vector * vect)
     return cabs(sqrt(result));
 }
 Vector * subtract_vectors(Vector * resulting_vect, Vector * original_vect){
-	int i;
-	#pragma omp parallel for num_threads(thread_count) shared(original_vect, resulting_vect)\
-	private(i) schedule(static,chunk_size)
-	for (i=0; i < resulting_vect->size; i++){
-		resulting_vect->values[i] -= original_vect->values[i];
+	int i = 0;
+	for (i; i < resulting_vect->size; i++){
+		resulting_vect->values[i] = (resulting_vect->values[i] - original_vect->values[i]);
 	}
 	return resulting_vect;
 }

@@ -1,6 +1,6 @@
 #!/usr/bin/ruby
 require 'timeout'
-n  = 800
+n  = 8000
 def write_to_cmd
   begin
     result = Timeout::timeout(2) do

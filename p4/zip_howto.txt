@@ -1,0 +1,23 @@
+Two options: gzipped tarball, or (Windows-style zip)
+
+First, place all files in a directory named (e.g.) "smith". Make sure you are in the parent directory of smith.
+
+1) gzipped tarball
+
+(to create archive, c means create)
+bash$ tar cvzf smith.tgz smith
+
+(to see contents of archive, t means titles)
+bash$ tar tzf smith.tgz
+
+(to extract contents of archive, x means extract)
+bash$ tar xvzf smith.tgz
+
+
+2) Windows-style zip:
+
+(create, file is named smith.zip)
+bash$ zip -r smith smith 
+
+(extract)
+bash$ unzip smith.zip

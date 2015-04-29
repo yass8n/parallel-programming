@@ -29,7 +29,8 @@ static void get_input_from_user(int argc, char * argv[], int * n){
 int main(int argc, char * argv[]){
 	int n;
 	get_input_from_user(argc, argv, &n);
-	// srand48(time(NULL));
+	srand48(time(NULL));
+	printf("%d\n", drand48());
 	#pragma omp parallel 
 	{
 	if(omp_get_thread_num() == 0){
