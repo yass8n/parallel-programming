@@ -1,3 +1,8 @@
+/*
+Yaseen Aniss
+This is g_elimination.h file. It is used to declare the gaussian elimination functions
+and it also contains the global variables "thread_count" and "chunk_size"
+*/
 #ifndef _G_ELIMINATION_H_
 #define _G_ELIMINATION_H_
 #include "vector.h"

@@ -1,3 +1,7 @@
+/*
+Yaseen Aniss
+This is my SERIAL Gaussian Elimination implementation
+*/
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>

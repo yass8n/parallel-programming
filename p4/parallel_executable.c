@@ -1,3 +1,7 @@
+/*
+Yaseen Aniss
+This is my PARALLEL Gaussian Elimination implementation using OpenMP
+*/
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -7,16 +11,16 @@
 #include "g_elimination.h"
 #include <assert.h>
 #include <omp.h>
-//CHANGE DYNAMIC 1 TO SOMTHING ELSE
+int thread_count;
 /*
- * Function:  get_input_from_user
  * Purpose:   Reads in the users input and summarizes how to run program
               if the user fails to pass the correct number of arguments
- * In args:   argc, argv
- * Out args:  n: number of rows and columns
-              thread_count: number of threads to use
+              
+ * Input args:   argc, argv
+
+ * Output args:  n: number of rows and columns
+                 thread_count: number of threads to use
  */
-int thread_count;
 static void get_input_from_user(int argc, char * argv[], int * n){
 	if (argc < 3){
 		fprintf(stderr, "Must run '%s' with following arguments: <thread count> <n> <g|i>\n", argv[0]);
@@ -30,7 +34,6 @@ int main(int argc, char * argv[]){
 	int n;
 	get_input_from_user(argc, argv, &n);
 	srand48(time(NULL));
-	printf("%d\n", drand48());
 	#pragma omp parallel 
 	{
 	if(omp_get_thread_num() == 0){

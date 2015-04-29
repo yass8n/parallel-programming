@@ -1,3 +1,8 @@
+/*
+Yaseen Aniss
+This is matrix.h file. It is used to define what a Matrix object is 
+and what functions are associated with matricies
+*/
 #ifndef _MATRIX_H_
 #define _MATRIX_H_
 

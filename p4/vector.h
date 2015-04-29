@@ -1,3 +1,8 @@
+/*
+Yaseen Aniss
+This is vector.h file. It is used to define what a Vector object is 
+and what functions are associated with vectors
+*/
 #ifndef _VECTOR_H_
 #define _VECTOR_H_
 #include <complex.h>
