@@ -7,7 +7,6 @@ This is g_elimination.c file. It is used to execute the gaussian elimination alg
 #include <stdlib.h>
 #include <time.h>
 #include "g_elimination.h"
-#include <assert.h>
 #include <omp.h>
 
 int thread_count = 1;
@@ -60,7 +59,9 @@ double * back_substitution(Matrix **matrix, Vector **vector){
 	double * x_values = calloc(sizeof(double), (*matrix)->size);
 	for (i = (*matrix)->size-1; i >= 0; i--){
 		x_values[i] = (*vector)->values[i]/(*matrix)->values[i][i];
-		double x_value = x_values[i]; //this improves timing because in the for loop ahead, we no longer have to index the x_values array n times
+		double x_value = x_values[i]; 
+		//saving the value in a variable (x_value) improves 
+		//timing because in the for loop ahead because we no longer have to index the x_values array n times
 		int j = 0;
 		#pragma omp parallel for num_threads(thread_count) shared(matrix, vector, x_values, x_value, i)\
 		private(j) schedule(static,chunk_size)
@@ -107,7 +108,6 @@ Vector * multiply_matrix_by_x_vector(Matrix * matrix, Vector * x_values, int n){
 	#pragma omp parallel for num_threads(thread_count) shared(matrix, x_values, result)\
 	 private(i) schedule(static,chunk_size)
 	for (i = 0; i < x_values->size; i++){
-		assert(matrix->size == x_values->size);
 		result->values[i] = cross_product(matrix->values[i], x_values->values, n);
 	}
 	return result;

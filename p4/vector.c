@@ -7,6 +7,8 @@ This is vector.c file. It is used to define the functions associated with vector
 #include <stdlib.h>
 #include <stdio.h>
 #include <math.h>
+int thread_count;
+int chunk_size;
 /*
   Purpose:      Allocate memory for the Vector 
 
@@ -79,7 +81,9 @@ double l2_norm(Vector * vect)
 {
     double result = 0;
     int i = 0;
-    for(i; i < vect->size; i++){
+    #pragma omp parallel for num_threads(thread_count)\
+    private(i) schedule(static,chunk_size) reduction(+:result) 
+    for(i=0; i < vect->size; i++){
         result += pow(vect->values[i], 2);
     }
     return cabs(sqrt(result));
@@ -96,7 +100,9 @@ double l2_norm(Vector * vect)
  */
 Vector * subtract_vectors(Vector * resulting_vect, Vector * original_vect){
 	int i = 0;
-	for (i; i < resulting_vect->size; i++){
+  #pragma omp parallel for num_threads(thread_count) shared(original_vect, resulting_vect)\
+  private(i) schedule(static,chunk_size)
+	for (i = 0; i < resulting_vect->size; i++){
 		resulting_vect->values[i] = (resulting_vect->values[i] - original_vect->values[i]);
 	}
 	return resulting_vect;

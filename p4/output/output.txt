@@ -1,0 +1,152 @@
+40 = number of processors
+1 = number of threads
+l2norm = 2.3266151e-03
+Completed in 2487.5005640000sec
+
+40 = number of processors
+1 = number of threads
+l2norm = 4.7228771e-03
+Completed in 2496.6284540000sec
+
+40 = number of processors
+1 = number of threads
+l2norm = 1.1697389e-03
+Completed in 2488.2300620000sec
+
+40 = number of processors
+1 = number of threads
+l2norm = 1.8569270e-02
+Completed in 2496.7507140000sec
+
+40 = number of processors
+1 = number of threads
+l2norm = 1.5968391e-03
+Completed in 2488.2639810000sec
+
+
+40 = number of processors
+2 = number of threads
+l2norm = 2.1582933e-03
+Completed in 1482.2467100000sec
+
+40 = number of processors
+2 = number of threads
+l2norm = 1.8320505e-03
+Completed in 1480.6281920000sec
+
+40 = number of processors
+2 = number of threads
+l2norm = 7.3891378e-03
+Completed in 1486.9608140000sec
+
+40 = number of processors
+2 = number of threads
+l2norm = 8.9454246e-03
+Completed in 1480.5716080000sec
+
+40 = number of processors
+2 = number of threads
+l2norm = 1.5696568e-03
+Completed in 1480.1268840000sec
+
+40 = number of processors
+5 = number of threads
+l2norm = 1.2601330e-03
+Completed in 661.0534540000sec
+
+40 = number of processors
+5 = number of threads
+l2norm = 1.0149966e-03
+Completed in 648.3755130000sec
+
+40 = number of processors
+5 = number of threads
+l2norm = 3.0335835e-03
+Completed in 647.9126370000sec
+
+40 = number of processors
+5 = number of threads
+l2norm = 2.1725800e-03
+Completed in 661.0913990000sec
+
+40 = number of processors
+5 = number of threads
+l2norm = 9.2725067e-04
+Completed in 647.8693120000sec
+
+40 = number of processors
+10 = number of threads
+l2norm = 3.5262791e-03
+Completed in 492.9497610000sec
+
+40 = number of processors
+10 = number of threads
+l2norm = 2.3262191e-03
+Completed in 445.7726070000sec
+
+40 = number of processors
+10 = number of threads
+l2norm = 1.0362484e-02
+Completed in 484.6871540000sec
+
+40 = number of processors
+10 = number of threads
+l2norm = 1.3496729e-03
+Completed in 340.6463410000sec
+
+40 = number of processors
+10 = number of threads
+l2norm = 1.2685486e-03
+Completed in 425.4008390000sec
+
+40 = number of processors
+20 = number of threads
+l2norm = 4.4774944e-03
+Completed in 477.8869770000sec
+
+40 = number of processors
+20 = number of threads
+l2norm = 1.5791855e-03
+Completed in 341.4154260000sec
+
+40 = number of processors
+20 = number of threads
+l2norm = 1.1589770e-03
+Completed in 396.2279210000sec
+
+40 = number of processors
+20 = number of threads
+l2norm = 9.7799192e-04
+Completed in 250.9073400000sec
+
+40 = number of processors
+20 = number of threads
+l2norm = 2.6668764e-03
+Completed in 443.4989310000sec
+
+40 = number of processors
+30 = number of threads
+l2norm = 1.2925863e-02
+Completed in 235.5693470000sec
+
+40 = number of processors
+30 = number of threads
+l2norm = 5.5294395e-03
+Completed in 236.1200960000sec
+
+40 = number of processors
+30 = number of threads
+l2norm = 2.8378147e-03
+Completed in 431.8842120000sec
+
+40 = number of processors
+30 = number of threads
+l2norm = 1.4896091e-03
+Completed in 313.4855550000sec
+
+40 = number of processors
+30 = number of threads
+l2norm = 1.2689033e-03
+Completed in 294.2086380000sec
+
+
