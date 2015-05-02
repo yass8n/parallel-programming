@@ -1,6 +1,6 @@
 /*
 Yaseen Aniss
-This is my SERIAL Gaussian Elimination implementation
+This is my SERIAL Gaussian Elimination implementation 
 */
 #include <stdio.h>
 #include <string.h>
@@ -46,14 +46,6 @@ double * back_substitution(Matrix **matrix, Vector **vector){
 	}
 	return x_values;
 }
-/*
- * Function:  get_input_from_user
- * Purpose:   Reads in the users input and summarizes how to run program
-              if the user fails to pass the correct number of arguments
- * In args:   argc, argv
- * Out args:  n: number of rows and columns
-              thread_count: number of threads to use
- */
 double * execute_gaussian_elimination(Matrix ** matrix, Vector ** vector){
 	int i = 0, j = 0, k = 0; 
 	for (i,k; i < (*matrix)->size; i ++, k++){

@@ -27,7 +27,7 @@ static void get_input_from_user(int argc, char * argv[], int * n){
 		exit(0);
 	}
 	(*n) = atoi(argv[1]);
-    set_thread_count(atoi(argv[2]), (*n)); //thread_count this is a defined in g_elimination.h
+    set_thread_count_and_chunk_size(atoi(argv[2]), (*n)); //thread_count this is a defined in g_elimination.h
     omp_set_num_threads(thread_count);
 }
 int main(int argc, char * argv[]){
@@ -50,9 +50,9 @@ int main(int argc, char * argv[]){
 
 	double start_time = omp_get_wtime();
 	x_values->values = execute_gaussian_elimination(&matrix, &vector);
+	double end_time = omp_get_wtime();
 	Vector * resulting_vector = multiply_matrix_by_x_vector(matrix_original, x_values, n);
 	resulting_vector = subtract_vectors(resulting_vector, vector_original);
-	double end_time = omp_get_wtime();
 
 	printf("l2norm = %.7le\n", l2_norm(resulting_vector));
 	printf("Completed in %.10lfsec\n\n", end_time - start_time);

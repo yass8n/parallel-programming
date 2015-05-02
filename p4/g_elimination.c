@@ -17,9 +17,33 @@ int chunk_size = 1;
   Input args:   num_threads: the number of threads to use
   				n: the number of values in a row
  */
-void set_thread_count(int num_threads, int n){
+void set_thread_count_and_chunk_size(int num_threads, int n){
 	thread_count = num_threads;
-	chunk_size = ((n / (thread_count*2)));
+	if (n % (thread_count*2) != 0){
+		chunk_size = calculate_chunk_size(thread_count, n);
+	} else {
+		chunk_size = ((n / (thread_count*2)));
+	}
+}
+/*
+  Purpose:      Calculate the next highest chunk size that is evenly divisible by n
+  
+  Input args:   num_threads: the number of threads to use
+  				n: the number of values in a row
+
+  returns: next highest chunk size that is evenly divisible by n 
+		  ...this number will be slightly less than (n / (thread_count*2)) at best case
+		  OR equal to 1 at worst case 
+ */
+int calculate_chunk_size(int num_threads, int n){ 
+  int i;
+  for (i = num_threads; i < n; i++){
+    if (n % (i*2) == 0){ 
+      return n/(i*2);
+    }   
+  }
+  //worst case scenaio: we return 1 as the chunk size if all else fails
+  return 1;
 }
 /*
   Purpose:      For value in the current column that has an index greater than "row",
@@ -51,7 +75,7 @@ void forward_elimination(Matrix **matrix, Vector **vector, int row){
   Input args:   matrix: the matrix we will be operating on
                 vector: the vector we will be operating on
 
-  Output args:  x_values: the new vector with the X values that
+  returns:  x_values: the new vector with the X values that
                           solve the linear system
  */
 double * back_substitution(Matrix **matrix, Vector **vector){
@@ -80,7 +104,7 @@ double * back_substitution(Matrix **matrix, Vector **vector){
                           solve the linear system
                 size: length of both "matrix_row_values" and "x_values"
 
-  Output args:  result: the result of the cross product between "matrix_row_values" and "x_values"
+  returns:  result: the result of the cross product between "matrix_row_values" and "x_values"
  */
 double cross_product(double * matrix_row_values, double * x_values, int size){
 	double result = 0;
@@ -100,7 +124,7 @@ double cross_product(double * matrix_row_values, double * x_values, int size){
                           solve the linear system
                 n: length of the x_values and matrix rows
 
-  Output args:  result: the result of the multiplication between the matrix and the vector
+  returns:  result: the result of the multiplication between the matrix and the vector
  */
 Vector * multiply_matrix_by_x_vector(Matrix * matrix, Vector * x_values, int n){
 	Vector * result = create_vector(x_values->size, 0);
@@ -118,7 +142,7 @@ Vector * multiply_matrix_by_x_vector(Matrix * matrix, Vector * x_values, int n){
   Input args:   matrix: the matrix we will be operating on
                 vector: the vector we will be operating on
 
-  Output args:  x_values: the new vector with the X values that
+  returns:  x_values: the new vector with the X values that
                           solve the linear system
  */
 double * execute_gaussian_elimination(Matrix ** matrix, Vector ** vector){
