@@ -13,23 +13,23 @@ int chunk_size;
   Purpose:      Allocate memory for the Vector 
 
   Input args:   Size: the number of values to allocate
-  				initialize: can be 0 or 1.
-  					        if 0, dont initialzie the values
-  					        if 1, initialize the values to random numbers
+                initialize: can be 0 or 1.
+                      if 0, dont initialzie the values
+                      if 1, initialize the values to random numbers
 
   Output args:  Vector *: pointer to a new Vector object
  */
 Vector * create_vector(int size, int initialize){
-	Vector * vector = malloc(sizeof(vector));
-	vector->values = calloc(sizeof(double), size);
-	vector->size = size;
-	if (initialize == 1){
+    Vector * vector = malloc(sizeof(vector));
+    vector->values = calloc(sizeof(double), size);
+    vector->size = size;
+    if (initialize == 1){
     int i = 0;
-		for (i; i < vector->size; i++){
-		     vector->values[i] = drand48() * 2e6 - 1e6;
-		}
-	}
-	return vector;
+        for (i; i < vector->size; i++){
+             vector->values[i] = drand48() * 2e6 - 1e6;
+        }
+    }
+    return vector;
 }
 /*
   Purpose:      Print a Vector's values
@@ -37,10 +37,10 @@ Vector * create_vector(int size, int initialize){
   Input args:   vector: pointer to the vector we will be operating on
  */
 void print_vector(Vector * vector){
-	int i = 0;
-	for (i; i < vector->size; i++){
-	     printf("%f\n ", vector->values[i]);
-	}
+    int i = 0;
+    for (i; i < vector->size; i++){
+         printf("%f\n ", vector->values[i]);
+    }
 }
 /*
   Purpose:      Swap the rows of a vector
@@ -53,8 +53,8 @@ void print_vector(Vector * vector){
  */
 void swap_vector_row(Vector **vector, int initial_row, int swap_row){
     double initial_value = (*vector)->values[initial_row];
-	(*vector)->values[initial_row] = (*vector)->values[swap_row];
-	(*vector)->values[swap_row] = initial_value;
+    (*vector)->values[initial_row] = (*vector)->values[swap_row];
+    (*vector)->values[swap_row] = initial_value;
 }
 /*
   Purpose:      Create an exact copy of a vector
@@ -90,20 +90,20 @@ double l2_norm(Vector * vect)
 }
 /*
   Purpose:      Subtract the values of two vectors to create a new one 
-  				with the new resulting values
+                  with the new resulting values
 
   Input args:   original_vect: pointer to one of the vector we will be operating on
                 resulting_vect: pointer to one of the vector we will be operating on
 
   Output args:  resulting_vect: Vector that contains the 
-  				result of "resulting_vect - original_vect"        
+                  result of "resulting_vect - original_vect"        
  */
 Vector * subtract_vectors(Vector * resulting_vect, Vector * original_vect){
-	int i = 0;
+    int i = 0;
   #pragma omp parallel for num_threads(thread_count) shared(original_vect, resulting_vect)\
   private(i) schedule(static,chunk_size)
-	for (i = 0; i < resulting_vect->size; i++){
-		resulting_vect->values[i] = (resulting_vect->values[i] - original_vect->values[i]);
-	}
-	return resulting_vect;
+    for (i = 0; i < resulting_vect->size; i++){
+        resulting_vect->values[i] = (resulting_vect->values[i] - original_vect->values[i]);
+    }
+    return resulting_vect;
 }

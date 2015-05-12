@@ -16,17 +16,17 @@ end
 def generate_batch_file(n, p, i)
     file_name = "p-#{p}_n-#{n}_run-#{i}.sh"
     File.open("script.sh", 'a') { |f|
-	  f.puts "qsub -l select=1:ncpus=#{p} ./" + file_name
-	}
+      f.puts "qsub -l select=1:ncpus=#{p} ./" + file_name
+    }
     f = File.open(file_name, 'w')
 
     file_data = "#!/bin/sh\n
-	#PBS -N p-#{p}_n-#{n}_run-#{i}\n
-	#PBS -j oe\n
-	#PBS -l walltime=1:00:00\n
-	#PBS -l select=1:ncpus=#{p}\n
-	export OMP_NUM_THREADS=#{p}\n
-	./parallel_execute #{n} #{p}"
+    #PBS -N p-#{p}_n-#{n}_run-#{i}\n
+    #PBS -j oe\n
+    #PBS -l walltime=1:00:00\n
+    #PBS -l select=1:ncpus=#{p}\n
+    export OMP_NUM_THREADS=#{p}\n
+    ./parallel_execute #{n} #{p}"
 
     f.write(file_data)
     f.close()

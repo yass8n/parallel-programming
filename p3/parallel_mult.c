@@ -17,9 +17,9 @@ I used the above reference for tips on how to structure my matrix
    Purpose: an object to hold the values that the user entered
 
    Variables: 
-		   matrix_form: buffer for the ijk, ikj, or kij
-		   flag:        buffer for the flag (R or I)
-		   n:           The number of columns in a row
+           matrix_form: buffer for the ijk, ikj, or kij
+           flag:        buffer for the flag (R or I)
+           n:           The number of columns in a row
 */
  typedef struct Details {
     char matrix_form[4];//buffer for the ijk, ikj, or kij
@@ -29,14 +29,14 @@ I used the above reference for tips on how to structure my matrix
 /*
   Purpose:      Allocate memory for the matricies and initialize the values to 0
   Input args:   A: pointer to Global_A matrix
-  				B: pointer to Global_B matrix
-  			    C: pointer to final_matrix 
-  			    a: pointer to ocal_a matrix 
+                  B: pointer to Global_B matrix
+                  C: pointer to final_matrix 
+                  a: pointer to ocal_a matrix 
 
   Output args:  A: pointer to Global_A matrix (initialized to 0)
-  				B: pointer to Global_B matrix (initialized to 0)
-  			    C: pointer to final_matrix (initialized to 0)
-  			    a: pointer to ocal_a matrix (initialized to 0)
+                  B: pointer to Global_B matrix (initialized to 0)
+                  C: pointer to final_matrix (initialized to 0)
+                  a: pointer to ocal_a matrix (initialized to 0)
  */
 void create_matrices(int **A, int **B, int **C, int **a, int n){
     (*A) = calloc(sizeof(int), n*n); 
@@ -77,7 +77,7 @@ void initialize_input_matrix(int **M, int n){
 /*
   Purpose:      Print a Matrix with each row on its own line
   Input args:   M: The Matrix to be printed
-				n: The number of columns in a row
+                n: The number of columns in a row
  */
 void print_matrix(int *M, int n){
     for (int i = 0; i < n; i ++){
@@ -90,12 +90,12 @@ void print_matrix(int *M, int n){
 /*
   Purpose:      Multilpy the Matricies A and B to produce a matrix C
   Input args:   A: pointer to a local_A matrix that only has (n/comm_sz) rows filled
-				B: pointer to a filled Global_B matrix
-			    comm_sz: the size of the comm_world
-			    details: pointer to the filled input data that the user entered
+                B: pointer to a filled Global_B matrix
+                comm_sz: the size of the comm_world
+                details: pointer to the filled input data that the user entered
   
   Output args:  C: pointer to a section of the "final_matrix" matrix that is the result of the 
-			    multiplication of A and B
+                multiplication of A and B
  */
 void multiply_matricies(int *A, int *B, int *C, Details *details, int comm_sz){
     int n = details->n;
@@ -131,16 +131,16 @@ void multiply_matricies(int *A, int *B, int *C, Details *details, int comm_sz){
 }
 /*
   Purpose: Read in the users input and assign appropriate values to all the matricies 
-		   according to the data that was entered
+           according to the data that was entered
   
   Output args:  A: pointer to an initialized and filled Global_A matrix
-  				B: pointer to an initialized and filled Global_B matrix
-  			    C: pointer to an initialized and empty final_matrix (all values are 0)
-  			    a: pointer to an initialized and empty local_a matrix (all values are 0)
-  			    details: pointer to the filled input data that the user entered
+                  B: pointer to an initialized and filled Global_B matrix
+                  C: pointer to an initialized and empty final_matrix (all values are 0)
+                  a: pointer to an initialized and empty local_a matrix (all values are 0)
+                  details: pointer to the filled input data that the user entered
  */
 void get_user_input(int **A, int **B, int**C, int **a, Details *details) {
-	fscanf(stdin, "%s", details->matrix_form); //get form
+    fscanf(stdin, "%s", details->matrix_form); //get form
     if (strncmp(details->matrix_form, "ijk", 3) != 0 && 
         strncmp(details->matrix_form, "ikj", 3) != 0 &&
         strncmp(details->matrix_form, "kij", 3) != 0){
@@ -149,7 +149,7 @@ void get_user_input(int **A, int **B, int**C, int **a, Details *details) {
         exit(0);
     }
      
-	fscanf(stdin, "%s", details->flag); //get flag
+    fscanf(stdin, "%s", details->flag); //get flag
     if (strncmp(details->flag, "I", 1) != 0 && 
         strncmp(details->flag, "i", 1) != 0 && 
         strncmp(details->flag, "r", 1) != 0 && 
@@ -157,13 +157,13 @@ void get_user_input(int **A, int **B, int**C, int **a, Details *details) {
         printf("%s\n", "Illegal flag. Must be 'I' or 'R'");
         exit(0);
     }
-	fscanf(stdin, "%d", &(details->n)); //get N
+    fscanf(stdin, "%d", &(details->n)); //get N
     if (details->n < 2){
         printf("%s\n", "Size Must be Greater than 1!");
         exit(0);
     }
 
-	create_matrices(A, B, C, a, details->n);
+    create_matrices(A, B, C, a, details->n);
     if (strncmp(details->flag, "R", 1) == 0){
         srand(time(NULL));
         initialize_random_matrix(A,details->n);
@@ -198,12 +198,12 @@ static void build_mpi_type(Details *details, MPI_Datatype * input_details){
 }
 
 int main(){
-	int *global_A, *global_B, *local_A, *final_matrix;
-	Details *details = malloc(sizeof(Details));
-	double start_time;
-	double end_time;
-	int my_rank;
-	int comm_sz;
+    int *global_A, *global_B, *local_A, *final_matrix;
+    Details *details = malloc(sizeof(Details));
+    double start_time;
+    double end_time;
+    int my_rank;
+    int comm_sz;
 
     MPI_Init(NULL, NULL);
 
@@ -216,8 +216,8 @@ int main(){
 
   /* start the timer on rank 0 */
     if (my_rank == 0){
-		get_user_input(&global_A, &global_B, &final_matrix, &local_A, details);
-		start_time = MPI_Wtime();
+        get_user_input(&global_A, &global_B, &final_matrix, &local_A, details);
+        start_time = MPI_Wtime();
     }
     /* Send the details from rank 0 to other processors/threads  */
     MPI_Bcast(details, 1, input_details, 0, MPI_COMM_WORLD);
@@ -225,36 +225,36 @@ int main(){
     int row_times_col = (details->n * details->n);
 
     if (my_rank != 0){
-    	/*using the value for n given to us through details objects passed from process 0
-    	to create n X n matricies for all 4 relevant matricies
-    	global_A, global_B, local_A final_matrix;
-    	*/
-	    create_matrices(&global_A, &global_B, &final_matrix, &local_A, details->n);
-	}
-	/* scatter global_A amongst the processors in the comm world */
-	MPI_Scatter(global_A, (row_times_col) / comm_sz, MPI_INT, local_A, (row_times_col) / comm_sz, MPI_INT, 0, MPI_COMM_WORLD);
+        /*using the value for n given to us through details objects passed from process 0
+        to create n X n matricies for all 4 relevant matricies
+        global_A, global_B, local_A final_matrix;
+        */
+        create_matrices(&global_A, &global_B, &final_matrix, &local_A, details->n);
+    }
+    /* scatter global_A amongst the processors in the comm world */
+    MPI_Scatter(global_A, (row_times_col) / comm_sz, MPI_INT, local_A, (row_times_col) / comm_sz, MPI_INT, 0, MPI_COMM_WORLD);
 
-	/* broadcast Global_b amongst the processors in the comm world */
+    /* broadcast Global_b amongst the processors in the comm world */
     MPI_Bcast(global_B, row_times_col, MPI_INT, 0, MPI_COMM_WORLD);
 
     /* Multiply the matricies using the local_a values we got from MPI_Scatter and 
     the global_B we got from MPI_Bcast */
-	multiply_matricies(local_A, global_B, final_matrix, details, comm_sz);
+    multiply_matricies(local_A, global_B, final_matrix, details, comm_sz);
 
 
-	/*  gathering all the data into final_matrix using process 0 */
-	MPI_Gather(final_matrix, (row_times_col) / comm_sz, MPI_INT, final_matrix, (row_times_col) / comm_sz , MPI_INT, 0,MPI_COMM_WORLD);
+    /*  gathering all the data into final_matrix using process 0 */
+    MPI_Gather(final_matrix, (row_times_col) / comm_sz, MPI_INT, final_matrix, (row_times_col) / comm_sz , MPI_INT, 0,MPI_COMM_WORLD);
 
-	if (my_rank == 0){
-		end_time  = MPI_Wtime();
+    if (my_rank == 0){
+        end_time  = MPI_Wtime();
         double elapsed_time = end_time - start_time;
-		printf("\nrunning on %d processor(s)\n""Elapsed time = %.7e seconds\n",
-			 comm_sz,elapsed_time);
+        printf("\nrunning on %d processor(s)\n""Elapsed time = %.7e seconds\n",
+             comm_sz,elapsed_time);
 
         if (strncmp(details->flag, "I", 1) == 0 || strncmp(details->flag, "i", 1) == 0){
-		    print_matrix(final_matrix, details->n);
+            print_matrix(final_matrix, details->n);
         }
-	}
+    }
 
     MPI_Finalize();
 
